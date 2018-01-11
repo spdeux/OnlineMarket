@@ -1,0 +1,57 @@
+
+
+
+  <!--<ngx-carousel-->
+    <!--[inputs]="carouselOne"-->
+    <!--(carouselLoad)="myfunc($event)">-->
+
+
+    <!--<div  *ngFor="let productItem of collectionProducts">-->
+      <!--<ngx-item NgxCarouselItem div class="product-thumb clearfix col-lg-3">-->
+        <!--<div class="images"><a href="product.html"><img src={{productItem.image}} alt="Long Sleeve Shirt Fashion Men" title="Long Sleeve Shirt Fashion Men" class="img-responsive" /></a></div>-->
+        <!--<div class="caption">-->
+          <!--<h4><a href="product.html">{{productItem?.name}}</a></h4>-->
+          <!--<p class="price"> <span class="price-new">{{productItem?.newPrice}}</span> <span class="price-old">{{productItem?.oldPrice}}</span> <span class="saving">-20%</span> </p>-->
+        <!--</div>-->
+        <!--<div class="button-group">-->
+          <!--<button class="btn-primary" type="button" onClick=""><span>Add to Cart</span></button>-->
+          <!--<div class="add-to-links">-->
+            <!--<button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>-->
+            <!--<button type="button" data-toggle="tooltip" title="Compare this Product" onClick=""><i class="fa fa-exchange"></i></button>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+
+
+    <!--<button NgxCarouselPrev class='leftRs'>&lt;</button>-->
+    <!--<button NgxCarouselNext class='rightRs'>&gt;</button>-->
+  <!--</ngx-carousel>-->
+  <ngx-carousel
+    [inputs]="carouselTile"
+    (carouselLoad)="carouselTileLoad($event)">
+
+    <ngx-tile NgxCarouselItem *ngFor="let productItem of collectionProducts">
+      <div class="product-thumb clearfix col-lg-3 ">
+      <div class="image"><a href="product.html"><img src={{productItem.image}} alt="Long Sleeve Shirt Fashion Men" title="Long Sleeve Shirt Fashion Men" class="img-responsive" /></a></div>
+      <div class="caption">
+      <h4><a href="product.html">{{productItem?.name}}</a></h4>
+      <p class="price"> <span class="price-new">{{productItem?.newPrice}}</span> <span class="price-old">{{productItem?.oldPrice}}</span> <span class="saving" *ngIf="productItem?.saving">{{productItem?.saving+"%"}}</span> </p>
+      </div>
+      <div class="button-group">
+      <button class="btn-primary" type="button" onClick=""><span>Add</span></button>
+      <div class="add-to-links">
+        <div class="row">
+          <div  class="col-lg-6"> <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button></div>
+          <div  class="col-lg-6"> <button type="button" data-toggle="tooltip" title="Compare this Product" onClick=""><i class="fa fa-exchange"></i></button></div>
+        </div>
+      </div>
+      </div>
+      </div>
+    </ngx-tile>
+
+    <button NgxCarouselPrev class='leftRs'>&lt;</button>
+    <button NgxCarouselNext class='rightRs'>&gt;</button>
+  </ngx-carousel>
+
