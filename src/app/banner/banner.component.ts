@@ -1,14 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxCarousel, NgxCarouselStore } from 'ngx-carousel';
+import {Banner} from "../model/banner";
+import {BannerService} from "../services/banner.service";
 @Component({
   selector: 'app-banner',
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
-
+  bannerCollection:Banner[];
   carouselBanner:any;
+
+  constructor(private bannerService:BannerService){
+
+  }
+
+
   ngOnInit(){
+
+    this.bannerService.getBanners().subscribe(result=>this.bannerCollection=result);
 
     this.carouselBanner = {
       grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0},
