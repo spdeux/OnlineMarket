@@ -14,6 +14,12 @@ import {SiteFeaturesComponent} from './site-features/site-features.component';
 import {siteFeature} from "./model/site-feature";
 import {SiteFeatureService} from "./services/site-feature.service";
 import {BannerService} from "./services/banner.service";
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { SearchComponent } from './search/search.component';
+import { ProductsComponent } from './products/products.component';
+import {InMemoryWebApiModule} from "angular-in-memory-web-api";
+import {InMemoryProductDataService} from "./mock/in-memory-product-data.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,13 +27,18 @@ import {BannerService} from "./services/banner.service";
     FeaturesComponent,
     FeaturesComponent,
     BannerComponent,
-    SiteFeaturesComponent
+    SiteFeaturesComponent,
+    ShoppingCartComponent,
+    ProductDetailComponent,
+    SearchComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgxCarouselModule
+    NgxCarouselModule,
+    InMemoryWebApiModule.forRoot(InMemoryProductDataService)
   ],
   providers: [
     ProductService,

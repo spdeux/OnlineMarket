@@ -63,7 +63,7 @@ export class BannerComponent implements OnInit {
 
   /* It will be triggered on every slide*/
   onmoveFn(data: NgxCarouselStore) {
-    console.log(data);
+    // console.log(data);
   }
 
 }

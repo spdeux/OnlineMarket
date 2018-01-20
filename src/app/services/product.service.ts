@@ -1,27 +1,39 @@
-import { Injectable } from '@angular/core';
-import {Product} from "../model/product";
-import {Observable} from "rxjs/Observable";
-import {of} from "rxjs/observable/of";
+import {Injectable} from '@angular/core';
+import {AppUrl} from "../app-url";
+import {Http} from "@angular/http";
+
 
 @Injectable()
 export class ProductService {
 
-  products:Product[];
+  public url = AppUrl;
 
-  constructor() {
-
-    this.products=[
-      {id:1,name:'product1',newPrice:20,oldPrice:40},
-      {id:2,name:'product2',newPrice:20,oldPrice:40},
-      {id:3,name:'product3',newPrice:20,oldPrice:40},
-      {id:4,name:'product4',newPrice:20,oldPrice:40},
-      {id:5,name:'product5',newPrice:20,oldPrice:40},
-      {id:6,name:'product6',newPrice:20,oldPrice:40}
-      ]
+  constructor(private http: Http) {
   }
 
-  getProducts():Observable<any>{
-   return of(this.products);
+  getProducts() {
+    return this.http.get(this.url.products)
+      .toPromise()
+      .then(res => res.json());
+
+  }
+
+  getProductSearch(term: string) {
+
+    let url = this.url.products + '/' + 'name=/' + term+'/';
+
+    return this.http.get(url)
+      .toPromise()
+      .then(res => res.json());
+
+  }
+
+  getProductByCategoryId(categoryId:number){
+    let url=this.url.products+'/categories/?id='+categoryId;
+
+    return this.http.get(url)
+      .toPromise()
+      .then(res=>res.json());
   }
 
 

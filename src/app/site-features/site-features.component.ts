@@ -12,7 +12,10 @@ export class SiteFeaturesComponent implements OnInit {
   constructor(private siteFeatureService:SiteFeatureService) { }
 
   ngOnInit() {
-    this.siteFeatureService.getSiteFeatures().subscribe(result=>this.siteFeatureCollection=result);
+
+    this.siteFeatureService.getSiteFeatures().subscribe(result=>{
+       this.siteFeatureCollection=result
+    });
   }
 
 }

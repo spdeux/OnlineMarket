@@ -1,10 +1,10 @@
 (function ($) {
 "use strict";
-console.log('Reza Younesi...')
-  console.log($)
-  $('#reza').on("click",function () {
-    console.log('hello Dear....')
-  })
+// console.log('Reza Younesi...')
+//   console.log($)
+//   $('#reza').on("click",function () {
+//     console.log('hello Dear....')
+//   })
 /*----------------------------
     Slideshow
 ------------------------------ */
