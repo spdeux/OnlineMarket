@@ -1,6 +1,17 @@
 
-<div class="owl-wrapper"
-     style="width: 2492px; left: 0px; display: block; transition: all 0ms ease; transform: translate3d(0px, 0px, 0px);"
-     *ngFor="let product of this.productCollection" >
-  <app-product  [inputProduct]="product"></app-product>
-</div>
+<ngx-carousel
+  [inputs]="carouselTile"
+  (carouselLoad)="carouselTileLoad($event)">
+
+  <ngx-tile NgxCarouselItem *ngFor="let product of this.productCollection">
+    <div class="product-thumb clearfix col-lg-3 ">
+      <app-product    [inputProduct]="product"></app-product>
+    </div>
+  </ngx-tile>
+
+  <button NgxCarouselPrev class='leftRs'>&lt;</button>
+  <button NgxCarouselNext class='rightRs'>&gt;</button>
+</ngx-carousel>
+
+
+

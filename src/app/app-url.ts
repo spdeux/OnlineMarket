@@ -1,3 +1,6 @@
 export const AppUrl = {
-  'products': '/api/products'
+  'products': '/api/products',
+  'reviews':'/api/reviews',
+  'thumbnails':'/api/thumbnails',
+  'categories':'/api/categories'
 };

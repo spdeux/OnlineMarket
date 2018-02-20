@@ -1,0 +1,22 @@
+<h3 class="subtitle">{{this.productTypeTitle}}</h3>
+<div class="side-item">
+
+  <div class="product-thumb clearfix" *ngFor="let product of this.products">
+    <div class="image"><a href="product.html"><img alt={{product?.name}} class="img-responsive"
+                                                   src={{product?.img}}
+                                                   title={{product?.name}}></a></div>
+    <div class="caption">
+      <h4><a href="product.html">{{product?.name}}</a></h4>
+      <!--<p class="price"> $ {{product?.newPrice}} </p>-->
+      <p class="price"><span class="price-new">$ {{product?.newPrice}}</span> <span
+        class="price-old" *ngIf="product?.oldPrice!=0">$ {{product?.oldPrice}}</span>
+        <span class="saving" *ngIf="product?.discount!=0">- {{product?.discount}} %</span></p>
+
+      <div class="rating" *ngIf="product?.rate!=0">
+        <star-rating-comp [rating]="product?.rate" [starType]="'svg'"
+                          [readOnly]="true"></star-rating-comp>
+      </div>
+    </div>
+  </div>
+
+</div>

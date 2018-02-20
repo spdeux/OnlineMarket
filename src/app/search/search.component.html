@@ -2,8 +2,8 @@
         placeholder="Search" type="text" value=""
         #search (keyup)="onSearch(search.value)" [(ngModel)]="searchValue">
 
-<div *ngIf="isShow">
-  <div class="result-search" *ngFor="let searchedItem of this.searchResult">
+<div class="search-box" *ngIf="isShow">
+  <div class="result-search ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" *ngFor="let searchedItem of this.searchResult">
     <a   (click)="onNavigate(searchedItem)"> {{searchedItem?.name}}</a>
   </div>
 </div>

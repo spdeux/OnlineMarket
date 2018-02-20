@@ -1,43 +1,27 @@
-
-<!--<div *ngFor="let product of productCollection">-->
-
-  <!--<figure class="snip1171">-->
-  <!--<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample71.jpg" alt="sample71"/>-->
-  <!--<div class="price">$19.00</div>-->
-  <!--<figcaption>-->
-    <!--<h3>{{product.name}}</h3>-->
-    <!--<p>-->
-      <!--Sometimes I think the surest sign that intelligent life exists elsewhere in the universe is that none of it has tried to contact us.-->
-    <!--</p><a href="#">Add to Cart</a>-->
-  <!--</figcaption>-->
-<!--</figure>-->
-
-<!--</div>-->
-
-
 <div class="owl-item" style="width: 178px;">
-  <div  class="product-thumb">
-  <div  class="image">
-    <a  href="product.html">
-    <img  alt="{{this.inputProduct.name}}" class="img-responsive" src="{{this.inputProduct.img}}" title="{{this.inputProduct.name}}">
-  </a>
-  </div>
-  <div  class="caption">
-    <h4 ><a  href="product.html">{{this.inputProduct.name}}</a></h4>
-    <p  class="price"> <span  class="price-new">{{this.inputProduct.newPrice}}</span>
-      <span  class="price-old">{{this.inputProduct.oldPrice}}</span>
-      <span  class="saving">{{this.inputProduct.discount}}</span> </p>
-    <div  class="rating" *ngFor="let r of this.inputProduct.rate">
-      <span class="fa fa-stack"><i  class="fa fa-star-o fa-stack-2x"></i></span>
-    </div>
-  </div>
-  <div  class="button-group">
-    <button  class="btn-primary" onclick="" type="button"><span >Add to Cart</span></button>
-    <div  class="add-to-links">
-      <button  data-toggle="tooltip" onclick="" title="" type="button" data-original-title="Add to wishlist"><i  class="fa fa-heart"></i></button>
-      <button  data-toggle="tooltip" onclick="" title="" type="button" data-original-title="Add to compare"><i  class="fa fa-exchange"></i></button>
-    </div>
-  </div>
+<div  class="product-thumb">
+<div  class="image">
+<a  href="product.html">
+<img  alt="{{this.inputProduct?.name}}" class="img-responsive" src="{{this.inputProduct?.img}}" title="{{this.inputProduct?.name}}">
+</a>
+</div>
+<div  class="caption">
+<h4 ><a  href="product.html">{{this.inputProduct?.name}}</a></h4>
+<p  class="price"> <span  class="price-new">{{"$"+this.inputProduct?.newPrice}}</span>
+<span  class="price-old" *ngIf="this.inputProduct?.oldPrice!=0">{{"$"+this.inputProduct?.oldPrice}}</span>
+<span  class="saving" *ngIf="this.inputProduct?.discount!=0">{{this.inputProduct?.discount +"%"}}</span> </p>
+<!--<div  class="rating" *ngFor="let r of this.inputProduct.rate">-->
+<!--<span class="fa fa-stack"><i  class="fa fa-star-o fa-stack-2x"></i></span>-->
+<!--</div>-->
+</div>
+<div  class="button-group">
+<button  class="btn-primary" onclick="" type="button"><span >Add to Cart</span></button>
+<div  class="add-to-links">
+<button  data-toggle="tooltip" onclick="" title="" type="button" data-original-title="Add to wishlist"><i  class="fa fa-heart"></i></button>
+<button  data-toggle="tooltip" onclick="" title="" type="button" data-original-title="Add to compare"><i  class="fa fa-exchange"></i></button>
 </div>
 </div>
+</div>
+</div>
+
 

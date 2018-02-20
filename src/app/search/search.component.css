@@ -1,3 +1,35 @@
+:host(){
+  position: relative;
+  display: block;
+}
+.search-box{
+  position: absolute;
+  top:100%;
+  left: 0;
+  z-index: 10000 !important;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 0 0 4px 4px;
+}
 .result-search{
-
+  background: lightgray;
+  text-align: left;
+  padding: 15px 10px;
+  box-sizing: border-box;
+}
+.ui-autocomplete {
+  border: 1px solid #ddd;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: rgb(221, 221, 221);
+  border-top: none;
+  overflow: hidden;
+  background-color: #fff;
+  text-align: left;
+  border-radius: 0;
+  font: normal 14px Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-family: IRANSans !important;
+  font-weight: bold;
 }

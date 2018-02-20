@@ -4,6 +4,7 @@ import {ProductService} from "../services/product.service";
 import {Product} from "../model/product";
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -16,7 +17,7 @@ export class SearchComponent implements OnInit {
   isShow:boolean=false;
 
   constructor(private productService: ProductService,
-              private router: Router) {
+             private router:Router ) {
   }
 
   ngOnInit() {
@@ -36,7 +37,7 @@ export class SearchComponent implements OnInit {
   }
 
   onNavigate(product) {
-      this.router.navigate(['products',product.id]);
+      this.router.navigate(['/products',product.id]);
       this.searchValue='';
       this.isShow=false;
 
