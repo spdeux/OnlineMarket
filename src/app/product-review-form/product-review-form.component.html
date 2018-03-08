@@ -1,0 +1,39 @@
+<!--<form class="form-horizontal">-->
+
+  <h2>Write a review</h2>
+  <div class="form-group required">
+    <div class="col-sm-12">
+      <label for="input-name" class="control-label">Your Name</label>
+      <input type="text" class="form-control" id="input-name" [(ngModel)]="productReview.author" >
+    </div>
+  </div>
+  <div class="form-group required">
+    <div class="col-sm-12">
+      <label for="input-review" class="control-label">Your Review</label>
+      <textarea class="form-control" id="input-review" rows="5" [(ngModel)]="productReview.comment" ></textarea>
+      <div class="help-block"><span class="text-danger">Note:</span> HTML is not translated!</div>
+    </div>
+  </div>
+  <div class="form-group required">
+    <div class="col-sm-12">
+      <label class="control-label">Rating</label>
+      &nbsp;&nbsp;&nbsp; Bad&nbsp;
+      <input type="radio" value="1" name="rating" [(ngModel)]="productReview.rate">
+      &nbsp;
+      <input type="radio" value="2" name="rating" [(ngModel)]="productReview.rate">
+      &nbsp;
+      <input type="radio" value="3" name="rating" [(ngModel)]="productReview.rate">
+      &nbsp;
+      <input type="radio" value="4" name="rating" [(ngModel)]="productReview.rate">
+      &nbsp;
+      <input type="radio" value="5" name="rating" [(ngModel)]="productReview.rate">
+      &nbsp;Good
+    </div>
+  </div>
+  <div class="buttons">
+    <div class="pull-right">
+      <button class="btn btn-primary" id="button-review" type="button" (click)="onCreate()">Continue</button>
+    </div>
+  </div>
+
+<!--</form>-->

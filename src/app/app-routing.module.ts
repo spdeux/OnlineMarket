@@ -23,7 +23,7 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'home'
   },
-  {path:'categories',component:ProductCategoryComponent}
+  {path:'categories/:id',component:ProductCategoryComponent}
 ]
 
 @NgModule({

@@ -1,0 +1,33 @@
+<div class="products-category" *ngFor="let pr of this.inputProducts">
+  <div class="product-layout product-grid col-lg-5ths col-md-5ths col-sm-3 col-xs-12">
+    <div class="product-thumb">
+      <div class="image"><a (click)="onNavigate(pr)"><img src={{pr?.img}}
+                                                          alt=" Strategies for Acquiring Your Own Laptop "
+                                                          title=" Strategies for Acquiring Your Own Laptop "
+                                                          class="img-responsive"></a></div>
+      <div>
+        <div class="caption">
+          <h4><a class="wrapText" (click)="onNavigate(pr)"> {{pr?.name?.substr(0,20)}} </a></h4>
+          <!--<p class="description"> {{pr?.name}}</p>-->
+          <p class="price">
+
+            <span class="price-new">$ {{pr?.newPrice}}</span>
+            <span class="price-old">$ {{pr?.oldPrice}}</span>
+            <span *ngIf="pr?.discount!=0" class="saving">{{pr?.discount}}%</span>
+            <span class="price-tax">Ex Tax: $ {{pr?.tax}}</span></p>
+        </div>
+        <div class="button-group">
+          <button class="btn-primary" type="button" onclick=""><span>Add to Cart</span></button>
+          <div class="add-to-links">
+            <button type="button" data-toggle="tooltip" title="" onclick="" data-original-title="Add to Wish List"><i
+              class="fa fa-heart"></i> <span>Add to Wish List</span></button>
+            <button type="button" data-toggle="tooltip" title="" onclick=""
+                    data-original-title="Compare this Product"><i class="fa fa-exchange"></i>
+              <span>Compare this Product</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

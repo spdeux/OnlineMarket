@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-left-side',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./left-side.component.css']
 })
 export class LeftSideComponent implements OnInit {
-
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
-}
+  onNavigate(id:number) {
+    this.router.navigate(['/categories',id]);
+    }
+
+  }

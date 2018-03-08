@@ -19,8 +19,15 @@ export class CategoryService {
       .then(res => res.json());
   }
 
-  getCategoriesByParentId(parentId: number){
+  getCategoriesByParentId(parentId: number) {
     let url = this.url.categories + '/?parentId=' + parentId;
+    return this.http.get(url)
+      .toPromise()
+      .then(res => res.json());
+  }
+
+  getCategoryById(categoryId: number){
+    let url = this.url.categories + '/' + categoryId;
     return this.http.get(url)
       .toPromise()
       .then(res => res.json());

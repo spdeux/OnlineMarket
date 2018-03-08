@@ -10,9 +10,6 @@
 <p  class="price"> <span  class="price-new">{{"$"+this.inputProduct?.newPrice}}</span>
 <span  class="price-old" *ngIf="this.inputProduct?.oldPrice!=0">{{"$"+this.inputProduct?.oldPrice}}</span>
 <span  class="saving" *ngIf="this.inputProduct?.discount!=0">{{this.inputProduct?.discount +"%"}}</span> </p>
-<!--<div  class="rating" *ngFor="let r of this.inputProduct.rate">-->
-<!--<span class="fa fa-stack"><i  class="fa fa-star-o fa-stack-2x"></i></span>-->
-<!--</div>-->
 </div>
 <div  class="button-group">
 <button  class="btn-primary" onclick="" type="button"><span >Add to Cart</span></button>

@@ -1,0 +1,22 @@
+.selected{
+  font-weight: 900;
+}
+.minus
+{ background-position: 0px -12px; }
+
+.downNew{
+  top:2px;
+  right: 0;
+  position: absolute;
+  cursor: pointer;
+
+  content:"\f068s";
+  opacity: 0.6;
+  -moz-opacity: 0.6;
+}
+.childView{
+  padding-left: 10px;
+}
+.elimnatemargin{
+  margin-bottom: 0px
+}

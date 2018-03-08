@@ -35,6 +35,13 @@ import {SlideService} from "./services/slide.service";
 import { LeftSideComponent } from './left-side/left-side.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import {CategoryService} from "./services/category.service";
+import { PaginationComponent } from './pagination/pagination.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { ProductReviewComponent } from './product-review/product-review.component';
+import { ProductReviewFormComponent } from './product-review-form/product-review-form.component';
+import { CategoryMenuLeftsideComponent } from './category-menu-leftside/category-menu-leftside.component';
+import { ProductListViewComponent } from './product-list-view/product-list-view.component';
+import { ProductGridViewComponent } from './product-grid-view/product-grid-view.component';
 
 
 @NgModule({
@@ -55,7 +62,14 @@ import {CategoryService} from "./services/category.service";
     ProductTypesComponent,
     SlideComponent,
     LeftSideComponent,
-    ProductCategoryComponent
+    ProductCategoryComponent,
+    PaginationComponent,
+    CategoriesComponent,
+    ProductReviewComponent,
+    ProductReviewFormComponent,
+    CategoryMenuLeftsideComponent,
+    ProductListViewComponent,
+    ProductGridViewComponent
   ],
   imports: [
     BrowserModule,

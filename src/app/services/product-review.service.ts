@@ -23,4 +23,16 @@ export class ProductReviewService {
       .then(res => res.json());
   }
 
+  createReview(review){
+
+    return this.http.post(this.url.reviews,JSON.stringify(review))
+      .toPromise()
+      .then(res=> res.json() )
+      .catch(this.handleError);
+  }
+
+  handleError(error) {
+    console.log(error);
+  }
+
 }

@@ -1,0 +1,25 @@
+  <div id="review">
+    <div>
+      <div *ngFor="let review of this.selectedProductReview">
+        <table class="table table-striped table-bordered">
+          <tbody>
+          <tr>
+            <td style="width: 50%;"><strong><span>{{review?.author}}</span></strong></td>
+            <td class="text-right"><span>{{review?.date}}</span></td>
+          </tr>
+          <tr>
+            <td colspan="2"><p>{{review?.comment}}</p>
+              <div class="rating">
+                <star-rating-comp [rating]="review?.rate" [starType]="'svg'"
+                                  [readOnly]="true"></star-rating-comp>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <app-product-review-form [inputProductId]="inputProductId"></app-product-review-form>
+
+

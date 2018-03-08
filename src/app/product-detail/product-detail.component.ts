@@ -13,23 +13,23 @@ import {ThumbnailImage} from "../model/thumbnailImage";
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
+
   selectedProduct: Product = new Product();
-  selectedProductReview: Review[];
+  // selectedProductReview: Review[];
   selectedProductThumbnailImages: ThumbnailImage[];
-  imageZoomValue:any;
+  imageZoomValue: any;
 
   constructor(private productService: ProductService,
               private activatedRoute: ActivatedRoute,
-              private productReviewService: ProductReviewService,
+              // private productReviewService: ProductReviewService,
               private productThumbnailService: ProductThumbnailService) {
   }
 
   ngOnInit() {
-
     this.activatedRoute.params.subscribe((params: Params) => {
       if ('id' in params) {
         this.getProduct(params['id']);
-        this.getProductReviews(params['id']);
+        // this.getProductReviews(params['id']);
         this.getProductThumbnailImages(params['id']);
       }
     });
@@ -40,19 +40,17 @@ export class ProductDetailComponent implements OnInit {
       .getProductById(id)
       .then((res) => {
         this.selectedProduct = res;
-        this.imageZoomValue=(res as Product).img;
-        console.log(this.imageZoomValue);
+        this.imageZoomValue = (res as Product).img;
       });
   }
 
-  getProductReviews(productId: number) {
-    this.productReviewService
-      .getReviewsByProductId(productId)
-      .then((res) => {
-        // console.log(res);
-        this.selectedProductReview = res;
-      })
-  }
+  // getProductReviews(productId: number) {
+  //   this.productReviewService
+  //     .getReviewsByProductId(productId)
+  //     .then((res) => {
+  //       this.selectedProductReview = res;
+  //     })
+  // }
 
 
   getProductThumbnailImages(productId: number) {
@@ -61,5 +59,16 @@ export class ProductDetailComponent implements OnInit {
       .then((res) => {
         this.selectedProductThumbnailImages = res;
       })
+  }
+
+  increaseQuantity() {
+    this.selectedProduct.availableOptions.quantity += 1;
+  }
+
+  decreaseQuantity() {
+    if (this.selectedProduct.availableOptions.quantity > 0) {
+      this.selectedProduct.availableOptions.quantity -= 1;
+    }
+
   }
 }

@@ -14,8 +14,8 @@ export class InMemoryProductDataService implements InMemoryDbService {
         oldPrice: 241.00,
         discount: -5,
         rate: 4,
-        img: "../assets/image/product/macbook_air_1-350x350.jpg",
-        categoryId: 1,
+        img: "../assets/image/product/macbook_air_1-200x200.jpg",
+        categoryId: 11,
         rewardPoints: 600,
         available: 'In Stock',
         tax: 95,
@@ -32,7 +32,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: 26,
         rate: 0,
         img: "../assets/image/product/macbook_pro_1-200x200.jpg",
-        categoryId: 1,
+        categoryId: 11,
         rewardPoints: 500,
         available: 'In Stock',
         tax: 95,
@@ -48,7 +48,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: 5,
         rate: 0,
         img: "../assets/image/product/macbook_air_1-200x200.jpg",
-        categoryId: 1,
+        categoryId: 11,
         rewardPoints: 700,
         available: 'In Stock',
         tax: 95,
@@ -64,7 +64,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: 0,
         rate: 4,
         img: "../assets/image/product/macbook_1-200x200.jpg",
-        categoryId: 1,
+        categoryId: 11,
         rewardPoints: 400,
         available: 'In Stock',
         tax: 95,
@@ -80,7 +80,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: 0,
         rate: 0,
         img: "../assets/image/product/ipod_shuffle_1-200x200.jpg",
-        categoryId: 1,
+        categoryId: 11,
         rewardPoints: 200,
         available: 'In Stock',
         tax: 95,
@@ -96,7 +96,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: 50,
         rate: 0,
         img: "../assets/image/product/ipod_touch_1-200x200.jpg",
-        categoryId: 1,
+        categoryId: 55,
         rewardPoints: 500,
         available: 'In Stock',
         tax: 95,
@@ -112,7 +112,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: 40,
         rate: 5,
         img: "../assets/image/product/iphone_6-200x200.jpg",
-        categoryId: 2,
+        categoryId: 22,
         rewardPoints: 400,
         available: 'In Stock',
         tax: 95,
@@ -128,7 +128,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: 27,
         rate: 1,
         img: "../assets/image/product/nikon_d300_5-200x200.jpg",
-        categoryId: 2,
+        categoryId: 22,
         rewardPoints: 100,
         available: 'In Stock',
         tax: 95,
@@ -144,7 +144,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: 0,
         rate: 0,
         img: "../assets/image/product/nikon_d300_4-200x200.jpg",
-        categoryId: 2,
+        categoryId: 22,
         rewardPoints: 50,
         available: 'In Stock',
         tax: 95,
@@ -160,7 +160,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: 40,
         rate: 0,
         img: "../assets/image/product/macbook_5-200x200.jpg",
-        categoryId: 2,
+        categoryId: 17,
         rewardPoints: 25,
         available: 'In Stock',
         tax: 95,
@@ -176,7 +176,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: 0,
         rate: 5,
         img: "../assets/image/product/macbook_4-200x200.jpg",
-        categoryId: 2,
+        categoryId: 17,
         rewardPoints: 35,
         available: 'In Stock',
         tax: 95,
@@ -192,7 +192,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: 25,
         rate: 0,
         img: "../assets/image/product/macbook_3-200x200.jpg",
-        categoryId: 2,
+        categoryId: 18,
         rewardPoints: 55,
         available: 'In Stock',
         tax: 95,
@@ -208,14 +208,31 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: 0,
         rate: 0,
         img: "../assets/image/product/macbook_2-200x200.jpg",
-        categoryId: 2,
+        categoryId: 17,
         rewardPoints: 65,
         available: 'In Stock',
         tax: 95,
         code: 'product16',
         availableOptions: {color: ['red', 'gray', 'blue'], quantity: 2},
         brand: {id: 13, name: 'samsung'},
-      }
+      },
+      {
+        id: 14,
+        name: 'Aspire Ultrabook Laptop',
+        newPrice: 230.00,
+        oldPrice: 241.00,
+        discount: -5,
+        rate: 4,
+        img: "../assets/image/product/macbook_air_1-200x200.jpg",
+        categoryId: 54,
+        rewardPoints: 600,
+        available: 'In Stock',
+        tax: 95,
+        code: 'product17',
+        availableOptions: {color: ['red', 'pink', 'blue'], quantity: 2},
+        brand: {id: 1, name: 'asus'},
+
+      },
     ]
 
     let reviews = [
@@ -235,11 +252,46 @@ export class InMemoryProductDataService implements InMemoryDbService {
         rate: 3,
         productId: 1
       },
-      {id: 2, author: '', comment: '', date: '', rate: 2, productId: 2},
-      {id: 3, author: '', comment: '', date: '', rate: 3, productId: 3},
-      {id: 4, author: '', comment: '', date: '', rate: 4, productId: 4},
-      {id: 5, author: '', comment: '', date: '', rate: 5, productId: 5},
-      {id: 6, author: '', comment: '', date: '', rate: 6, productId: 6},
+      {
+        id: 2,
+        author: 'John',
+        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        date: '2018.02.21',
+        rate: 2,
+        productId: 2
+      },
+      {
+        id: 3,
+        author: 'Sara',
+        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        date: '2018.02.21',
+        rate: 3,
+        productId: 3
+      },
+      {
+        id: 4,
+        author: 'Anderson',
+        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        date: '2018.02.21',
+        rate: 4,
+        productId: 4
+      },
+      {
+        id: 5,
+        author: 'Tomas',
+        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        date: '2018.02.21',
+        rate: 5,
+        productId: 5
+      },
+      {
+        id: 6,
+        author: 'Anna',
+        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        date: '2018.02.21',
+        rate: 6,
+        productId: 6
+      },
 
     ];
 
@@ -282,17 +334,17 @@ export class InMemoryProductDataService implements InMemoryDbService {
       {id: 11, parentId: 1, name: "Laptops"},
       {id: 12, parentId: 1, name: "Desktops"},
       {id: 13, parentId: 1, name: "Cameras"},
-      {id: 14, parentId: 1, name: "Mobile Phones"},
+      {id: 14, parentId: 1, name: "Mobile"},
       {id: 15, parentId: 1, name: "TV & Home Audio"},
       {id: 16, parentId: 1, name: "MP3 Players"},
 
       {id: 2, parentId: 0, name: "Health & Beauty"},
-      {id: 17, parentId: 2, name: "Perfumes"},
-      {id: 18, parentId: 2, name: "Makeup"},
-      {id: 19, parentId: 2, name: "Sun Care"},
-      {id: 20, parentId: 2, name: "Skin Care"},
-      {id: 21, parentId: 2, name: "Eye Care"},
-      {id: 22, parentId: 2, name: "Hair Care"},
+      {id: 17, parentId: 58, name: "Perfumes"},
+      {id: 18, parentId: 58, name: "Makeup"},
+      {id: 19, parentId: 57, name: "Sun Care"},
+      {id: 20, parentId: 57, name: "Skin Care"},
+      {id: 21, parentId: 58, name: "Eye Care"},
+      {id: 22, parentId: 58, name: "Hair Care"},
 
       {id: 3, parentId: 0, name: "Watches"},
       {id: 23, parentId: 3, name: "Men's Watches"},
@@ -341,9 +393,16 @@ export class InMemoryProductDataService implements InMemoryDbService {
       {id: 52, parentId: 8, name: "Lighting"},
       {id: 53, parentId: 8, name: "Tools"},
 
+      {id: 54, parentId: 11, name: "mini-Laptops"},
+      {id: 55, parentId: 14, name: "Phones"},
+      {id: 56, parentId: 14, name: "Accessories"},
+
+      {id: 57, parentId: 2, name: "Men's healthy"},
+      {id: 58, parentId: 2, name: "Women's healthy"},
+
     ];
 
-    return {products, reviews, thumbnails,categories};
+    return {products, reviews, thumbnails, categories};
   }
 
   constructor() {

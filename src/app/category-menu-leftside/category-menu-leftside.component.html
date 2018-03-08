@@ -1,0 +1,15 @@
+<!--<h3 class="subtitle">Categories</h3>-->
+<div class="box-category">
+  <ul class="elimnatemargin">
+    <div *ngFor="let cat of this.categories; let i = index" >
+      <li   *ngIf="cat?.parentId==inputParentId" id="{{cat?.id}}" >
+        <a  [class.selected]="i == selectedRow" (click)="onNavigate(cat?.id)">{{cat?.name}}</a>
+        <span [class.down]="hasChildern(cat?.id)" (click)="setClickedRow(i,cat?.id)"  [class.minus]="i == selectedRow" ></span>
+        <ul class="childView" *ngIf="cat?.id==this.subcatId" >
+          <ng-container   *ngIf="isActive" >
+            <app-category-menu-leftside [inputParentId]="cat?.id"></app-category-menu-leftside>
+          </ng-container>
+        </ul>
+    </div>
+  </ul>
+</div>

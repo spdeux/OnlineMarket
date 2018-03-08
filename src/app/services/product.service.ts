@@ -3,11 +3,14 @@ import {AppUrl} from "../app-url";
 import {Http} from "@angular/http";
 import {ProductTypes} from "../model/Enumeration"
 import * as _ from 'lodash';
+import {Product} from "../model/product";
+import {Category} from "../model/category";
 
 @Injectable()
 export class ProductService {
 
   public url = AppUrl;
+
   constructor(private http: Http) {
   }
 
@@ -38,6 +41,16 @@ export class ProductService {
     return this.http.get(url)
       .toPromise()
       .then(res => res.json());
+  }
+
+  getproductsByCategoryIds(categoryIds: number[]) {
+    let products: Product[];
+
+    return this.getProducts().then(res => {
+      products = res;
+      products = _.filter(products, p => _.includes(categoryIds, p.categoryId));
+      return products;
+    });
   }
 
   getProductById(id: number) {
@@ -98,6 +111,44 @@ export class ProductService {
       return 'Special';
     else if (productType == 0)
       return 'BestSeller';
+  }
+
+  getSortedProduct(categoryIds: number[], selectedOrderId: number) {
+
+    let products: Product[];
+
+    return this.getproductsByCategoryIds(categoryIds).then(res2 => {
+          products = res2;
+          return products = this.SortProducts(selectedOrderId, products);
+        });
+  }
+
+  SortProducts(selectedOrderId: number, products: Product[]) {
+
+    if (selectedOrderId == 1) {
+      products = _.orderBy(products, 'name');
+    }
+    else if (selectedOrderId == 2) {
+      products = _.orderBy(products, 'name').reverse();
+    }
+    else if (selectedOrderId == 3) {
+      products = _.orderBy(products, 'newPrice');
+    }
+    else if (selectedOrderId == 4) {
+      products = _.orderBy(products, 'newPrice').reverse();
+    }
+    else if (selectedOrderId == 5) {
+      products = _.orderBy(products, 'rate').reverse();
+    }
+    else if (selectedOrderId == 6) {
+      products = _.orderBy(products, 'rate');
+    }
+    else if (selectedOrderId == -1) {
+      products = _.orderBy(products, 'id');
+    }
+
+    return products;
+
   }
 
 }

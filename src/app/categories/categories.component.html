@@ -1,0 +1,18 @@
+<h3 class="subtitle">Refine Search</h3>
+<ngx-carousel
+  [inputs]="carouselTile"
+  (carouselLoad)="carouselTileLoad($event)">
+
+  <ngx-tile NgxCarouselItem  class="category-list-thumb"  *ngFor="let cat of this.inputCategories">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+      <a (click)="onNavigate(cat?.id)" ><img src="../assets/image/no_image.jpg" alt={{cat?.name}}></a>
+      <a (click)="onNavigate(cat?.id)" style="font-size:smaller;white-space: nowrap;">{{cat?.name}} </a>
+    </div>
+  </ngx-tile>
+
+  <button NgxCarouselPrev class='leftRs'>&lt;</button>
+  <button NgxCarouselNext class='rightRs'>&gt;</button>
+</ngx-carousel>
+
+
+

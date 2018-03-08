@@ -5,7 +5,7 @@
 
   <ngx-tile NgxCarouselItem *ngFor="let product of this.productCollection">
     <div class="product-thumb clearfix col-lg-3 ">
-      <app-product    [inputProduct]="product"></app-product>
+      <app-product  [inputProduct]="product" *ngIf="product"></app-product>
     </div>
   </ngx-tile>
 

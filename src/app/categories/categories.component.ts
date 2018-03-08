@@ -1,38 +1,28 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Product} from "../model/product";
-import {ProductService} from "../services/product.service";
-import { NgxCarousel } from 'ngx-carousel';
-declare var $ :any;
-var $screensize = $(window).width();
+import { Component,Input ,OnInit } from '@angular/core';
+import {Category} from "../model/category";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-categories',
+  templateUrl: './categories.component.html',
+  styleUrls: ['./categories.component.css']
 })
-export class ProductsComponent implements OnInit {
-  productCollection: Product[];
-  @Input() inputCategoryId: number;
+export class CategoriesComponent implements OnInit {
+@Input() inputCategories:Category[];
   public carouselTileItems: Array<any>;
   public carouselTile: any;
 
-  constructor(private productService: ProductService) {
-  }
+  constructor(private router:Router) { }
 
   ngOnInit() {
     this.initiCarousel();
-    this.getProductByCategoryId(this.inputCategoryId);
   }
 
-  getProductByCategoryId(categoryId){
-
-    this.productService
-      .getProductByCategoryId(categoryId)
-      .then(result => {
-        this.productCollection = result
-      });
+  onNavigate(id:number) {
+    this.router.navigate(['/categories',id]);
   }
 
+  //Carousel Methods
   initiCarousel(){
     this.carouselTileItems = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 

@@ -1,217 +1,58 @@
-<h3 class="subtitle">Categories</h3>
-<div class="box-category">
-  <ul id="cat_accordion" *ngFor="let cat of this.categories" >
+<div id="content" class="container">
+  <h1 class="title">{{this.parentCategory?.name}}</h1>
+  <app-categories *ngIf="this.categories" [inputCategories]="this.categories"></app-categories>
+  <div class="product-filter">
+    <div class="row">
+      <div class="col-md-4 col-sm-5">
+        <div class="btn-group">
+          <button type="button" id="list-view" class="btn btn-default" [class.selected]="!this.isGridView" data-toggle="tooltip" title=""
+                  data-original-title="List" (click)="ActivateView('list')">
+            <i class="fa fa-th-list"></i>
+          </button>
+          <button type="button" id="grid-view" class="btn btn-default" [class.selected]="this.isGridView" data-toggle="tooltip" title=""
+                  data-original-title="Grid" (click)="ActivateView('grid')">
+            <i class="fa fa-th"></i>
+          </button>
+        </div>
+        <a href="compare.html" id="compare-total">Product Compare (0)</a></div>
+      <div class="col-sm-2 text-right">
+        <label class="control-label" for="input-sort">Sort By:</label>
+      </div>
+      <div class="col-md-3 col-sm-2 text-right">
+        <select id="input-sort" class="form-control col-sm-3" [(ngModel)]='sortOptionSelected'
+                (ngModelChange)="onSortOptionsSelected($event)">
+          <option class="option" *ngFor="let sOption of sortOptions" [value]="sOption.id">{{sOption.name}}</option>
+        </select>
+      </div>
+      <div class="col-sm-1 text-right">
+        <label class="control-label" for="input-limit">Show:</label>
+      </div>
+      <div class="col-sm-2 text-right">
+        <select id="input-limit" class='form-control' [(ngModel)]='showOptionSelected'
+                (ngModelChange)='onShowOptionsSelected($event)'>
+          <option class='option' *ngFor='let option of showOptions' [value]="option">{{option}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div *ngIf="this.products?.length==0"><span>there is no products</span></div>
 
-    <li><a href="category.html">{{cat?.name}}</a> <span class="down"></span>
-      <!--<ul>-->
-        <!--<li><a href="category.html">Laptops</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">Sub Categories New</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li class="custom_id68"><a href="category.html">Desktops</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">Sub Categories New</a></li>-->
-            <!--<li><a href="category.html">Sub Categories New</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">Cameras</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">Mobile Phones</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">TV &amp; Home Audio</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">Sub Categories New</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">MP3 Players</a></li>-->
-      <!--</ul>-->
-    </li>
+    <app-product-grid-view [inputProducts]="this.products" *ngIf="this.isGridView"></app-product-grid-view>
+    <app-product-list-view [inputProducts]="this.products" *ngIf="!this.isGridView"></app-product-list-view>
+  </div>
 
-    <!--<li><a href="#">Clothing</a> <span class="down"  ></span>-->
-      <!--<ul>-->
-        <!--<li><a href="category.html">Men</a> <span class="down"></span>-->
-          <!--<ul >-->
-            <!--<li><a href="category.html">Sub Categories</a></li>-->
-            <!--<li><a href="category.html">Sub Categories</a></li>-->
-            <!--<li><a href="category.html">Sub Categories</a></li>-->
-            <!--<li><a href="category.html">Sub Categories</a></li>-->
-            <!--<li><a href="category.html">Sub Categories New</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">Women</a></li>-->
-        <!--<li><a href="category.html">Girls</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">Sub Categories</a></li>-->
-            <!--<li><a href="category.html">Sub Categories New</a></li>-->
-            <!--<li><a href="category.html">Sub Categories New</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">Boys</a></li>-->
-        <!--<li><a href="category.html">Baby</a></li>-->
-        <!--<li><a href="category.html">Accessories</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-      <!--</ul>-->
-    <!--</li>-->
-    <!--<li><a href="category.html">Electronics</a> <span class="down"></span>-->
-      <!--<ul>-->
-        <!--<li><a href="category.html">Laptops</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">Sub Categories New</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li class="custom_id68"><a href="category.html">Desktops</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">Sub Categories New</a></li>-->
-            <!--<li><a href="category.html">Sub Categories New</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">Cameras</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">Mobile Phones</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">TV &amp; Home Audio</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">Sub Categories New</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">MP3 Players</a></li>-->
-      <!--</ul>-->
-    <!--</li>-->
-    <!--<li><a href="category.html">Shoes</a> <span class="down"></span>-->
-      <!--<ul>-->
-        <!--<li><a href="category.html">Men</a></li>-->
-        <!--<li><a href="category.html">Women</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">Sub Categories</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">Girls</a></li>-->
-        <!--<li><a href="category.html">Boys</a></li>-->
-        <!--<li><a href="category.html">Baby</a></li>-->
-        <!--<li><a href="category.html">Accessories</a><span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">Sub Categories</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-      <!--</ul>-->
-    <!--</li>-->
-    <!--<li><a href="category.html">Watches</a> <span class="down"></span>-->
-      <!--<ul>-->
-        <!--<li><a href="category.html">Men's Watches</a></li>-->
-        <!--<li><a href="category.html">Women's Watches</a></li>-->
-        <!--<li><a href="category.html">Kids' Watches</a></li>-->
-        <!--<li><a href="category.html">Accessories</a></li>-->
-      <!--</ul>-->
-    <!--</li>-->
-    <!--<li><a href="category.html">Jewellery</a> <span class="down"></span>-->
-      <!--<ul>-->
-        <!--<li><a href="category.html">Silver</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">Gold</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">test 1</a></li>-->
-            <!--<li><a href="category.html">test 2</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">Diamond</a></li>-->
-        <!--<li><a href="category.html">Pearl</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">Men's Jewellery</a></li>-->
-        <!--<li><a href="category.html">Children's Jewellery</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">New Sub Categories</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-      <!--</ul>-->
-    <!--</li>-->
-    <!--<li><a href="category.html">Health &amp; Beauty</a> <span class="down"></span>-->
-      <!--<ul>-->
-        <!--<li><a href="category.html">Perfumes</a></li>-->
-        <!--<li><a href="category.html">Makeup</a></li>-->
-        <!--<li><a href="category.html">Sun Care</a></li>-->
-        <!--<li><a href="category.html">Skin Care</a></li>-->
-        <!--<li><a href="category.html">Eye Care</a></li>-->
-        <!--<li><a href="category.html">Hair Care</a></li>-->
-      <!--</ul>-->
-    <!--</li>-->
-    <!--<li><a href="category.html">Kids &amp; Babies</a> <span class="down"></span>-->
-      <!--<ul>-->
-        <!--<li><a href="category.html">Toys</a></li>-->
-        <!--<li><a href="category.html">Games</a> <span class="down"></span>-->
-          <!--<ul>-->
-            <!--<li><a href="category.html">test 25</a></li>-->
-          <!--</ul>-->
-        <!--</li>-->
-        <!--<li><a href="category.html">Puzzles</a></li>-->
-        <!--<li><a href="category.html">Hobbies</a></li>-->
-        <!--<li><a href="category.html">Strollers</a></li>-->
-        <!--<li><a href="category.html">Health &amp; Safety</a></li>-->
-      <!--</ul>-->
-    <!--</li>-->
-    <!--<li><a href="category.html">Sports</a> <span class="down"></span>-->
-      <!--<ul>-->
-        <!--<li><a href="category.html">Cycling</a></li>-->
-        <!--<li><a href="category.html">Running</a></li>-->
-        <!--<li><a href="category.html">Swimming</a></li>-->
-        <!--<li><a href="category.html">Football</a></li>-->
-        <!--<li><a href="category.html">Golf</a></li>-->
-        <!--<li><a href="category.html">Windsurfing</a></li>-->
-      <!--</ul>-->
-    <!--</li>-->
-    <!--<li><a href="category.html">Home &amp; Garden</a> <span class="down"></span>-->
-      <!--<ul>-->
-        <!--<li><a href="category.html">Bedding</a></li>-->
-        <!--<li><a href="category.html">Food</a></li>-->
-        <!--<li><a href="category.html">Furniture</a></li>-->
-        <!--<li><a href="category.html">Kitchen</a></li>-->
-        <!--<li><a href="category.html">Lighting</a></li>-->
-        <!--<li><a href="category.html">Tools</a></li>-->
-      <!--</ul>-->
-    <!--</li>-->
-    <!--<li><a href="category.html">Wines &amp; Spirits</a> <span class="down"></span>-->
-      <!--<ul>-->
-        <!--<li><a href="category.html">Wine</a></li>-->
-        <!--<li><a href="category.html">Whiskey</a></li>-->
-        <!--<li><a href="category.html">Vodka</a></li>-->
-        <!--<li><a href="category.html">Liqueurs</a></li>-->
-        <!--<li><a href="category.html">Beer</a></li>-->
-      <!--</ul>-->
-    <!--</li>-->
-  </ul>
+  <div class="row ">
+    <app-pagination
+      [loading]="loading"
+      (goPage)="goToPage($event)"
+      (goNext)="onNext()"
+      (goPrev)="onPrev()"
+      [pagesToShow]="3"
+      [page]="page"
+      [perPage]="limit"
+      [count]="total"></app-pagination>
+  </div>
 </div>
+
