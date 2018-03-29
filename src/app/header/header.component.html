@@ -77,9 +77,9 @@
         </div>
         <div id="top-links" class="nav pull-right flip">
           <ul>
-            <li *ngIf="this.userInfo">{{this.userInfo?.firstname}}+' '+{{this.userInfo?.lastname}}</li>
+            <li *ngIf="this.userInfo">{{this.userInfo?.firstname+' '+this.userInfo?.lastname}}</li>
             <li *ngIf="this.userInfo"><a>logout</a></li>
-            <li><a routerLink="/login">Login</a></li>
+            <li *ngIf="!this.userInfo"><a routerLink="/login">Login</a></li>
             <li><a routerLink="/register">Register</a></li>
           </ul>
         </div>

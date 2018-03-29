@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
     });
 
     this.userInfoService.loginEvent.subscribe(result => {
-      console.log('header userserviceinfo');
+
       console.log(result);
       if (result)
         this.userInfo = result;

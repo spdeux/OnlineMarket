@@ -27,12 +27,12 @@ export class LoginComponent implements OnInit {
   submitUser() {
     this.userService.getUserByUsernamePass(this.user.email, this.user.password).then(result => {
       if (result.length > 0) {
-
+        let userInfoResult=result[0] as UserInfo;
         this.userInfo = new UserInfo();
-        this.userInfo.id = this.user.id;
-        this.userInfo.guid = this.user.guid;
-        this.userInfo.firstname = this.user.firstname;
-        this.userInfo.lastname = this.user.lastname;
+        this.userInfo.id = userInfoResult.id;
+        this.userInfo.token = userInfoResult.token;
+        this.userInfo.firstname = userInfoResult.firstname;
+        this.userInfo.lastname = userInfoResult.lastname;
         this.userInfo.expirationDate = new Date();
 
         this.userInfoService.createUserInfo(this.userInfo).then(result2 => {

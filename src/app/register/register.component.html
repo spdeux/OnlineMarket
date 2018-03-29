@@ -12,7 +12,7 @@
       <div class="col-sm-9" id="content">
         <h1 class="title">Register Account</h1>
         <p>If you already have an account with us, please login at the <a routerLink="/login">Login Page</a>.</p>
-        <form class="form-horizontal" #userForm="ngForm" (ngSubmit)="submitUserForm()" >
+        <form class="form-horizontal" #userForm="ngForm" (ngSubmit)="submitUserForm()">
           <fieldset id="account">
             <legend>Your Personal Details</legend>
             <div style="display: none;" class="form-group required">
@@ -186,7 +186,7 @@
                 <select class="form-control" id="input-zone"
                         name="state" required
                         [(ngModel)]="user.address.state" #state="ngModel"
-                        >
+                >
                   <option *ngFor="let state of this.states" [value]="state.id" class="option">
                     {{state.title}}
                   </option>
@@ -210,12 +210,13 @@
                   <div *ngIf="password.errors?.required">
                     password is required.
                   </div>
-                  <div [hidden]="password.valid">
-                    Password mismatch
-                  </div>
                   <div *ngIf="password.errors?.minlength">
                     minlength of password is 6
                   </div>
+                  <div *ngIf="password.valid">
+                    Password mismatch
+                  </div>
+
                 </div>
               </div>
 
@@ -225,8 +226,8 @@
               <div class="col-sm-10">
                 <input type="password" class="form-control" id="input-confirm"
                        placeholder="Password Confirm" name="passwordConfirm"
-                       required   validateEqual="password" reverse="false"
-                       [(ngModel)]="user.passwordConfirm" #passwordConfirm="ngModel" >
+                       required validateEqual="password" reverse="false"
+                       [(ngModel)]="user.passwordConfirm" #passwordConfirm="ngModel">
                 <div *ngIf="passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)"
                      class="alert alert-danger">
 

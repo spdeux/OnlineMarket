@@ -6,6 +6,9 @@ import {ProductService} from "../services/product.service";
 import {Product} from "../model/product";
 import {ShoppingCart} from "../model/shopping-cart";
 import {ShoppingCartService} from "../services/shopping-cart.service";
+import {UserInfo} from "../model/userInfo";
+import {UserService} from "../services/user.service";
+
 
 @Component({
   selector: 'app-wish-list',
@@ -15,21 +18,41 @@ import {ShoppingCartService} from "../services/shopping-cart.service";
 export class WishListComponent implements OnInit {
   wishlistCollection = [];
   userId: number = 1;
-  shoppingCart:ShoppingCart;
-  disabledAddToCart:boolean=false;
+  shoppingCart: ShoppingCart;
+  disabledAddToCart: boolean = false;
 
   constructor(private wishListService: WishListService,
               private productService: ProductService,
               private shoppingCartService: ShoppingCartService,
+              private userService: UserService,
               private router: Router) {
   }
 
   ngOnInit() {
     this.getWishListByUser(this.userId);
-    this.shoppingCart=new ShoppingCart();
+    this.shoppingCart = new ShoppingCart();
   }
 
-  getWishListByUser(userId:number) {
+  // validateUser() {
+  //   let userInfo: UserInfo = JSON.parse(localStorage.getItem("userInfo"));
+  //   this.userId = userInfo.id;
+  //
+  //   //authenticate
+  //   this.userService.getUserById(this.userId).then(result => {
+  //
+  //     if (result) {
+  //       //user is authenticated
+  //       this.userService.getUserByIdGuid(this.userId, userInfo.token).then(result2 => {
+  //
+  //         if (result2) {
+  //           //user is authorized
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+
+  getWishListByUser(userId: number) {
     return this.wishListService.getWishListByUserId(userId).then(result => {
       this.wishlistCollection = result;
     });
@@ -46,7 +69,7 @@ export class WishListComponent implements OnInit {
 
   AddToShoppingCart(product: Product) {
 
-    this.disabledAddToCart=true;
+    this.disabledAddToCart = true;
     this.shoppingCart.userId = this.userId;
     this.shoppingCart.product = product;
     this.shoppingCart.quantity = 1;
@@ -55,17 +78,17 @@ export class WishListComponent implements OnInit {
       if (result.length == 0) {
         this.shoppingCartService.addToShoppingCart(this.shoppingCart).then(result2 => {
           this.shoppingCartService.addEvent.emit(1);
-          this.disabledAddToCart=false;
+          this.disabledAddToCart = false;
           // console.log(result2);
         });
       }
       else {
         this.shoppingCartService.getShoppingCartByUserIdAndProductId(this.userId, product.id).then(result4 => {
-          this.shoppingCart.id=result4[0].id;
-          this.shoppingCart.quantity+=result4[0].quantity;
+          this.shoppingCart.id = result4[0].id;
+          this.shoppingCart.quantity += result4[0].quantity;
 
           this.shoppingCartService.UpdateShoppingCart(this.shoppingCart).then(result3 => {
-            this.disabledAddToCart=false;
+            this.disabledAddToCart = false;
             // console.log(result3);
 
           });

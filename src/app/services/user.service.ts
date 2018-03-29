@@ -16,6 +16,7 @@ export class UserService {
       .catch(this.handleError);
   }
 
+  //authentication
   getUserById(id: number) {
     return this.http.get(this.url.users)
       .toPromise()
@@ -23,6 +24,15 @@ export class UserService {
       .catch(this.handleError);
   }
 
+  //authorization
+  getUserByIdGuid(id: number, token: string) {
+    return this.http.get(this.url.users)
+      .toPromise()
+      .then(res => res.json().firstname(u => u.id == id && u.token == token))
+      .catch(this.handleError);
+  }
+
+  //login
   getUserByUsernamePass(email: string, pass: string) {
     return this.http.get(this.url.users)
       .toPromise()

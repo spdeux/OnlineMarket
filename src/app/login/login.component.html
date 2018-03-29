@@ -48,7 +48,7 @@
                 <div *ngIf="password.invalid && (password.dirty || password.touched)"
                      class="alert alert-danger">
 
-                  <div *ngIf="password.errors.required">
+                  <div *ngIf="password.errors?.required">
                     password is required.
                   </div>
                 </div>
