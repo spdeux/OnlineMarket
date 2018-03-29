@@ -11,7 +11,7 @@
     <app-empty-page></app-empty-page>
   </div>
   <div *ngIf="this.wishlistCollection.length>0">
-    <div class="row" >
+    <div class="row">
       <!--Middle Part Start-->
       <div id="content" class="col-sm-12">
         <h1 class="title">My Wish List</h1>
@@ -45,9 +45,21 @@
                 <div class="price">$ {{wish?.product?.newPrice}}</div>
               </td>
               <td class="text-right">
-                <button class="btn btn-primary" title="" data-toggle="tooltip" onclick="cart.add('48');"
+                <button class="btn btn-primary"
+                        title=""
+                        data-toggle="tooltip"
                         type="button"
-                        data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></button>
+                        data-original-title="Add to Cart"
+                        (click)="AddToShoppingCart(wish?.product)"
+                        [disabled]="this.disabledAddToCart">
+                   <span *ngIf="!this.disabledAddToCart">
+                    <i class="fa fa-shopping-cart"></i>
+                   </span>
+                  <span *ngIf="this.disabledAddToCart">
+                    <i class="fa fa-shopping-cart"></i>
+                     <i class="fa fa-spinner fa-spin"></i>
+                   </span>
+                </button>
                 <a class="btn btn-danger" title="" data-toggle="tooltip"
                    (click)="onDelete(wish?.id)"
                    data-original-title="Remove"><i class="fa fa-times"></i></a></td>
