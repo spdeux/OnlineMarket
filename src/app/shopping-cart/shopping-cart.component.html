@@ -1,3 +1,82 @@
-<p>
-  shopping-cart works!
-</p>
+<div class="container">
+  <div id="content" class="col-sm-12">
+    <h3 class="title">Shopping Cart</h3>
+    <div class="row" *ngIf="this.shoppingCartCollection?.length==0">
+      <!--<span >empty shoppingcart</span>-->
+      <app-empty-page></app-empty-page>
+    </div>
+    <div *ngIf="this.shoppingCartCollection.length>0">
+      <div class="table-responsive" >
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <td class="text-center">Image</td>
+            <td class="text-left">Product Name</td>
+            <td class="text-left">Model</td>
+            <td class="text-left">Quantity</td>
+            <td class="text-right">Unit Price</td>
+            <td class="text-right">Total</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let cart of this.shoppingCartCollection">
+            <td class="text-center"><a (click)="onNavigate(cart?.product)">
+              <img src="{{cart?.product?.img}}"
+                   alt="{{cart?.product?.name}}"
+                   title="{{cart?.product?.name}}"
+                   class="img-thumbnail"></a>
+            </td>
+            <td class="text-left">
+              <a (click)="onNavigate(cart?.product)">{{cart?.product?.name}}</a><br>
+              <small *ngIf="cart?.product?.rewardPoints">
+                Reward Points: {{cart?.product?.rewardPoints}}
+              </small>
+            </td>
+            <td class="text-left">{{cart?.product?.brand?.name}}</td>
+            <td class="text-left">
+              <div class="input-group btn-block quantity">
+                <input type="text" name="quantity" value="{{cart?.quantity}}" size="1" class="form-control" [(ngModel)]="cart.quantity">
+                <span class="input-group-btn">
+                        <button type="button"
+                                data-toggle="tooltip"
+                                title="" class="btn btn-primary"
+                                (click)="onUpdate(cart)"
+                                data-original-title="Update">
+                          <i class="fa fa-refresh"></i>
+                        </button>
+                        <button type="button" data-toggle="tooltip"
+                                title="" class="btn btn-danger"
+                                (click)="onDelete(cart?.id,cart.quantity)"
+                                data-original-title="Remove">
+                          <i class="fa fa-times-circle"></i>
+                        </button>
+                        </span>
+              </div>
+            </td>
+            <td class="text-right">${{cart?.product?.newPrice}}</td>
+            <!--<td class="text-right">${{(cart?.quantity)*(cart?.product?.newPrice)}}</td>-->
+            <td class="text-right">${{this.totalAmount}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 class="subtitle">What would you like to do next?</h2>
+      <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery
+        cost.</p>
+      <div class="row">
+        <div class="col-sm-6">
+          <app-coupon></app-coupon>
+        </div>
+        <div class="col-sm-6">
+          <app-voucher></app-voucher>
+        </div>
+      </div>
+      <app-tax [inputTotal]="this.totalAmount"></app-tax>
+      <div class="buttons">
+        <div class="pull-left"><a routerLink="/home" class="btn btn-default">Continue Shopping</a></div>
+        <div class="pull-right"><a href="checkout.html" class="btn btn-primary">Checkout</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+

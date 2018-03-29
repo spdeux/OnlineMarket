@@ -2,11 +2,11 @@
 <div class="side-item">
 
   <div class="product-thumb clearfix" *ngFor="let product of this.products">
-    <div class="image"><a href="product.html"><img alt={{product?.name}} class="img-responsive"
+    <div class="image"><a (click)="onNavigate(product)"><img alt={{product?.name}} class="img-responsive"
                                                    src={{product?.img}}
                                                    title={{product?.name}}></a></div>
     <div class="caption">
-      <h4><a href="product.html">{{product?.name}}</a></h4>
+      <h4><a (click)="onNavigate(product)">{{product?.name}}</a></h4>
       <!--<p class="price"> $ {{product?.newPrice}} </p>-->
       <p class="price"><span class="price-new">$ {{product?.newPrice}}</span> <span
         class="price-old" *ngIf="product?.oldPrice!=0">$ {{product?.oldPrice}}</span>

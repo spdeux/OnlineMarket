@@ -1,0 +1,64 @@
+<div class="container">
+  <!-- Breadcrumb Start-->
+  <ul class="breadcrumb">
+    <li><a href="index-2.html"><i class="fa fa-home"></i></a></li>
+    <li><a href="#">Account</a></li>
+    <li><a href="wishlist.html">My Wish List</a></li>
+  </ul>
+  <!-- Breadcrumb End -->
+  <div class="row" *ngIf="this.wishlistCollection?.length==0">
+    <!--<span>empty wishlist</span>-->
+    <app-empty-page></app-empty-page>
+  </div>
+  <div *ngIf="this.wishlistCollection.length>0">
+    <div class="row" >
+      <!--Middle Part Start-->
+      <div id="content" class="col-sm-12">
+        <h1 class="title">My Wish List</h1>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <td class="text-center">Image</td>
+              <td class="text-left">Product Name</td>
+              <td class="text-left">Model</td>
+              <td class="text-right">Stock</td>
+              <td class="text-right">Unit Price</td>
+              <td class="text-right">Action</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let wish of this.wishlistCollection">
+              <td class="text-center">
+                <a (click)="onNavigate(wish?.product)">
+                  <img src={{wish?.product?.img}}
+                       alt={{wish?.product?.name}}
+                       title={{wish?.product?.name}}>
+                </a>
+              </td>
+              <td class="text-left">
+                <a (click)="onNavigate(wish?.product)">iPod Classic</a>
+              </td>
+              <td class="text-left">{{wish?.product?.brand?.name}}</td>
+              <td class="text-right">In Stock</td>
+              <td class="text-right">
+                <div class="price">$ {{wish?.product?.newPrice}}</div>
+              </td>
+              <td class="text-right">
+                <button class="btn btn-primary" title="" data-toggle="tooltip" onclick="cart.add('48');"
+                        type="button"
+                        data-original-title="Add to Cart"><i class="fa fa-shopping-cart"></i></button>
+                <a class="btn btn-danger" title="" data-toggle="tooltip"
+                   (click)="onDelete(wish?.id)"
+                   data-original-title="Remove"><i class="fa fa-times"></i></a></td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      <!--Middle Part End -->
+    </div>
+  </div>
+</div>
+

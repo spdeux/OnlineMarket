@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output,EventEmitter} from '@angular/core';
 import {Review} from "../model/review";
 import {ProductReviewService} from "../services/product-review.service";
 
@@ -9,6 +9,7 @@ import {ProductReviewService} from "../services/product-review.service";
 })
 export class ProductReviewFormComponent implements OnInit {
   @Input() inputProductId: number;
+  @Output() add:EventEmitter<any> = new EventEmitter();
   productReview: Review;
 
   constructor(private productReviewService: ProductReviewService) {
@@ -25,6 +26,8 @@ export class ProductReviewFormComponent implements OnInit {
 
     this.productReviewService.createReview(this.productReview).then(result => {
         console.log(result);
+        this.add.emit(this.productReview.productId);
+        this.productReview=new Review();
 
       }
     )

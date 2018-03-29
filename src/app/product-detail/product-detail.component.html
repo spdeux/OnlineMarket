@@ -72,12 +72,28 @@
                 <a class="qtyBtn mines" href="javascript:void(0);" (click)="decreaseQuantity()">-</a>
                 <div class="clear"></div>
               </div>
-              <button type="button" id="button-cart" class="btn btn-primary btn-lg">Add to Cart</button>
+              <button type="button" id="button-cart"
+                      class="btn btn-primary btn-lg"
+                      (click)="AddToShoppingCart(selectedProduct)"
+                      [disabled]="this.disabledAddToCart">
+
+                       <span *ngIf="!this.disabledAddToCart">
+                       Add to Cart
+                       </span>
+
+                       <span *ngIf="this.disabledAddToCart">
+                        Adding to Cart
+                       <i class="fa fa-spinner fa-spin"></i>
+                       </span>
+              </button>
             </div>
             <div>
-              <button type="button" class="wishlist" onclick=""><i class="fa fa-heart"></i> Add to Wish List</button>
+              <button type="button" class="wishlist" (click)="AddToWishList(selectedProduct)">
+                <i class="fa fa-heart"></i> Add to Wish List
+              </button>
               <br>
-              <button type="button" class="wishlist" onclick=""><i class="fa fa-exchange"></i> Compare this Product
+              <button type="button" class="wishlist">
+                <i class="fa fa-exchange"></i> Compare this Product
               </button>
             </div>
           </div>
@@ -162,13 +178,15 @@
       </div>
       <div id="tab-review" class="tab-pane">
 
-        <app-product-review [inputProductId]="this.selectedProduct?.id" *ngIf="this.selectedProduct?.id"></app-product-review>
+        <app-product-review [inputProductId]="this.selectedProduct?.id"
+                            *ngIf="this.selectedProduct?.id"></app-product-review>
 
       </div>
     </div>
     <h3 class="subtitle">Related Products</h3>
 
-      <app-products *ngIf="this.selectedProduct?.categoryId" [inputCategoryId]="this.selectedProduct?.categoryId"></app-products>
+    <app-products *ngIf="this.selectedProduct?.categoryId"
+                  [inputCategoryId]="this.selectedProduct?.categoryId"></app-products>
 
 
   </div>

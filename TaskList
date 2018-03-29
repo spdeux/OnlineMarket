@@ -1,0 +1,24 @@
+1.Display Sum of Product's price in shopping cart Link(v1)
+2.Link to a popup menu to show summary of selected products(v2)
+3.display category tabs in home page (v2)
+4.Voucher component(v1)
+5.Coupon component(v1)
+6.Tax component(v1)
+7.make country & state Model(v1)
+8.How to clean product review form after saving a comment (v1) [bug fix]
+9.Correct css for favorite button && AddToCart button in product component(v1)
+10.Compare product(v2)
+11.Login & authentication
+12.Checkout page which is regarding to shoppingcart page(v2)
+13.Contact us(v2)
+14.FAQ(v1)
+15.Register user(v1)
+16.Product navigationBar(v1)
+17.Not to allow to write negative or zero number in shopping cart(v1)
+18.Put confirmation box to delete product of shopping cart(v1) [sweet alert]
+19.Active magnet attribute on product's image(v1)
+20.Active toastre which is addaptable with angular4(v1)
+21.bug fix...
+22.ExpireDateTime for user login(v2)
+23.JWT(v2)
+

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {InMemoryDbService} from 'angular-in-memory-web-api';
+import {wishList} from "../model/wishList";
 
 
 @Injectable()
@@ -192,7 +193,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: 25,
         rate: 0,
         img: "../assets/image/product/macbook_3-200x200.jpg",
-        categoryId: 18,
+        categoryId: 17,
         rewardPoints: 55,
         available: 'In Stock',
         tax: 95,
@@ -402,7 +403,134 @@ export class InMemoryProductDataService implements InMemoryDbService {
 
     ];
 
-    return {products, reviews, thumbnails, categories};
+    let users = [
+      {id: -1, firstname: 'sepideh', lastname: 'masoumi', username: 'sepi', password: '123456'}
+    ];
+    let usersInfo=[
+      {id:-1,guid:'',firstname:'sepideh',lastname:'masoumi',expirationDate:new Date()}
+      ];
+
+    let shoppingCart = [{
+      id: 1, userId: -1, quantity: 2, product: {
+        id: 13,
+        name: 'Pnina Tornai Perfume',
+        newPrice: 110,
+        oldPrice: 0,
+        discount: 0,
+        rate: 0,
+        img: "../assets/image/product/macbook_2-200x200.jpg",
+        categoryId: 17,
+        rewardPoints: 65,
+        available: 'In Stock',
+        tax: 95,
+        code: 'product16',
+        availableOptions: {color: ['red', 'gray', 'blue'], quantity: 2},
+        brand: {id: 13, name: 'samsung'},
+      }
+    }];
+    let wishlist = [
+
+      {
+        id: 1, userId: -1, date: new Date(), product: {
+        id: 13,
+        name: 'Pnina Tornai Perfume',
+        newPrice: 110,
+        oldPrice: 0,
+        discount: 0,
+        rate: 0,
+        img: "../assets/image/product/macbook_2-200x200.jpg",
+        categoryId: 17,
+        rewardPoints: 65,
+        available: 'In Stock',
+        tax: 95,
+        code: 'product16',
+        availableOptions: {color: ['red', 'gray', 'blue'], quantity: 2},
+        brand: {id: 13, name: 'samsung'},
+      }
+      }
+    ];
+    let countries = [
+      {id: 1, title: 'Australia'},
+      {id: 2, title: 'Canada'},
+      {id: 3, title: 'Denmark'},
+      {id: 4, title: 'French'},
+      {id: 5, title: 'Germany'},
+      {id: 6, title: 'India'},
+      {id: 7, title: 'Iran'},
+      {id: 8, title: 'Italy'},
+      {id: 9, title: 'Japan'},
+      {id: 10, title: 'Russian'},
+      {id: 11, title: 'Taiwan'},
+      {id: 12, title: 'Turkey'},
+      {id: 13, title: 'United States'}
+    ];
+    let states = [
+      {id: 1, countryId: 1, title: 'sydney'},
+      {id: 2, countryId: 1, title: 'melbourn'},
+      {id: 3, countryId: 1, title: 'adelaide'},
+      {id: 4, countryId: 2, title: 'montreal'},
+      {id: 5, countryId: 2, title: 'toronto'},
+      {id: 6, countryId: 2, title: 'rich monhill'},
+      {id: 7, countryId: 2, title: 'vaugn'},
+      {id: 8, countryId: 2, title: 'quebec'},
+      {id: 9, countryId: 3, title: 'kolding'},
+      {id: 10, countryId: 3, title: 'viborg'},
+      {id: 11, countryId: 4, title: 'paris'},
+      {id: 12, countryId: 4, title: 'lyon'},
+      {id: 13, countryId: 4, title: 'marseille'},
+      {id: 14, countryId: 5, title: 'frankfurt'},
+      {id: 15, countryId: 6, title: 'dehli'},
+      {id: 16, countryId: 6, title: 'mumbai'},
+      {id: 17, countryId: 6, title: 'pune'},
+      {id: 18, countryId: 7, title: 'tehran'},
+      {id: 19, countryId: 7, title: 'kish'},
+      {id: 20, countryId: 7, title: 'chabahar'},
+      {id: 21, countryId: 8, title: 'milan'},
+      {id: 22, countryId: 9, title: 'Tokyo'},
+      {id: 23, countryId: 10, title: 'moscow'},
+      {id: 24, countryId: 11, title: 'taipei'},
+      {id: 25, countryId: 12, title: 'Istanbul'},
+      {id: 26, countryId: 12, title: 'ankara'},
+      {id: 27, countryId: 12, title: 'izmir'},
+      {id: 28, countryId: 13, title: 'LA'},
+      {id: 29, countryId: 13, title: 'california'},
+      {id: 30, countryId: 13, title: 'boston'}
+    ];
+    let taxes = [
+      {id: 1, stateId: 1, amount: .01},
+      {id: 1, stateId: 2, amount: .02},
+      {id: 1, stateId: 3, amount: .03},
+      {id: 1, stateId: 4, amount: .04},
+      {id: 1, stateId: 5, amount: .05},
+      {id: 1, stateId: 6, amount: .06},
+      {id: 1, stateId: 7, amount: .07},
+      {id: 1, stateId: 8, amount: .08},
+      {id: 1, stateId: 9, amount: .09},
+      {id: 1, stateId: 10, amount: .10},
+      {id: 1, stateId: 11, amount: .11},
+      {id: 1, stateId: 12, amount: .12},
+      {id: 1, stateId: 13, amount: .13},
+      {id: 1, stateId: 14, amount: .14},
+      {id: 1, stateId: 15, amount: .15},
+      {id: 1, stateId: 16, amount: .16},
+      {id: 1, stateId: 17, amount: .17},
+      {id: 1, stateId: 18, amount: .18},
+      {id: 1, stateId: 19, amount: .19},
+      {id: 1, stateId: 20, amount: .20},
+      {id: 1, stateId: 21, amount: .21},
+      {id: 1, stateId: 22, amount: .22},
+      {id: 1, stateId: 23, amount: .23},
+      {id: 1, stateId: 24, amount: .24},
+      {id: 1, stateId: 25, amount: .25},
+      {id: 1, stateId: 26, amount: .26},
+      {id: 1, stateId: 27, amount: .27},
+      {id: 1, stateId: 28, amount: .28},
+      {id: 1, stateId: 29, amount: .29},
+      {id: 1, stateId: 30, amount: .30}
+    ];
+
+
+    return {products, reviews, thumbnails, categories, users, shoppingCart, wishlist, countries, states, taxes,usersInfo};
   }
 
   constructor() {

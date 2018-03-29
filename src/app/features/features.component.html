@@ -5,9 +5,9 @@
 
     <ngx-tile NgxCarouselItem *ngFor="let productItem of collectionProducts">
       <div class="product-thumb clearfix col-lg-3 ">
-      <div class="image"><a href="product.html"><img src={{productItem.image}} alt="Long Sleeve Shirt Fashion Men" title="Long Sleeve Shirt Fashion Men" class="img-responsive" /></a></div>
+      <div class="image"><a (click)="onNavigate(productItem)"><img src={{productItem.image}} alt="Long Sleeve Shirt Fashion Men" title="Long Sleeve Shirt Fashion Men" class="img-responsive" /></a></div>
       <div class="caption">
-      <h4><a href="product.html">{{productItem?.name}}</a></h4>
+      <h4><a (click)="onNavigate(productItem)">{{productItem?.name}}</a></h4>
       <p class="price"> <span class="price-new">{{productItem?.newPrice}}</span> <span class="price-old">{{productItem?.oldPrice}}</span> <span class="saving" *ngIf="productItem?.saving">{{productItem?.saving+"%"}}</span> </p>
       </div>
       <div class="button-group">

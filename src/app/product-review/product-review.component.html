@@ -20,6 +20,6 @@
       </div>
     </div>
   </div>
-  <app-product-review-form [inputProductId]="inputProductId"></app-product-review-form>
+  <app-product-review-form [inputProductId]="inputProductId" (add)="getProductReviews($event)"></app-product-review-form>
 
 

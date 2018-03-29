@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ProductService} from "../services/product.service";
 import {Product} from "../model/product";
 import {ProductTypes} from "../model/Enumeration"
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-types',
@@ -14,7 +15,8 @@ export class ProductTypesComponent implements OnInit {
   productTypeTitle: string;
 
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -32,6 +34,10 @@ export class ProductTypesComponent implements OnInit {
 
   getproductTypeTitle() {
     this.productTypeTitle = this.productService.getProductTypeTitle(this.productType);
+  }
+
+  onNavigate(product) {
+    this.router.navigate(['/products', product.id]);
   }
 
 }

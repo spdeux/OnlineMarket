@@ -36,7 +36,6 @@
         "../src/assets/js/owl.carousel.min.js",
         "../src/assets/js/custom.js",
         "../node_modules/hammerjs/hammer.js"
-
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

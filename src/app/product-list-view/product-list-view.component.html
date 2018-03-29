@@ -3,9 +3,9 @@
   <div class="product-layout product-list col-xs-12">
     <div class="product-thumb">
       <div class="image"><a (click)="onNavigate(pr)"><img src={{pr?.img}}
-                                                     alt=" Strategies for Acquiring Your Own Laptop "
-                                                     title=" Strategies for Acquiring Your Own Laptop "
-                                                     class="img-responsive"></a></div>
+                                                          alt={{pr?.name}}
+                                                          title={{pr?.name}}
+                                                          class="img-responsive"></a></div>
       <div>
         <div class="caption">
           <h4><a class="wrapText" (click)="onNavigate(pr)"> {{pr?.name?.substr(0,20)}} </a></h4>
@@ -18,12 +18,25 @@
             class="price-tax">Ex Tax: $ {{pr?.tax}}</span></p>
         </div>
         <div class="button-group">
-          <button class="btn-primary" type="button" onclick=""><span>Add to Cart</span></button>
+          <button class="btn-primary" type="button" (click)="AddToShoppingCart(pr)" [disabled]="this.disabledAddToCart">
+                   <span *ngIf="!this.disabledAddToCart">
+                     Add to Cart
+                   </span>
+                   <span *ngIf="this.disabledAddToCart">
+                     Adding to Cart
+                     <i class="fa fa-spinner fa-spin"></i>
+                   </span>
+          </button>
           <div class="add-to-links">
-            <button type="button" data-toggle="tooltip" title="" onclick="" data-original-title="Add to Wish List"><i
-              class="fa fa-heart"></i> <span>Add to Wish List</span></button>
+            <button type="button" data-toggle="tooltip" title="" (click)="AddToWishList(pr)"
+                    data-original-title="Add to Wish List">
+              <i class="fa fa-heart"></i>
+              <span>Add to Wish List</span>
+            </button>
             <button type="button" data-toggle="tooltip" title="" onclick="" data-original-title="Compare this Product">
-              <i class="fa fa-exchange"></i> <span>Compare this Product</span></button>
+              <i class="fa fa-exchange"></i>
+              <span>Compare this Product</span>
+            </button>
           </div>
         </div>
       </div>

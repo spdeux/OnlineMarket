@@ -42,7 +42,23 @@ import { ProductReviewFormComponent } from './product-review-form/product-review
 import { CategoryMenuLeftsideComponent } from './category-menu-leftside/category-menu-leftside.component';
 import { ProductListViewComponent } from './product-list-view/product-list-view.component';
 import { ProductGridViewComponent } from './product-grid-view/product-grid-view.component';
-
+import { WishListComponent } from './wish-list/wish-list.component';
+import {WishListService} from "./services/wish-list.service";
+import {ShoppingCartService} from "./services/shopping-cart.service";
+import {UserService} from "./services/user.service";
+import { VoucherComponent } from './voucher/voucher.component';
+import { CouponComponent } from './coupon/coupon.component';
+import { TaxComponent } from './tax/tax.component';
+import { SubCategoryTabsComponent } from './sub-category-tabs/sub-category-tabs.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { EmptyPageComponent } from './empty-page/empty-page.component';
+import {CountryService} from "./services/country.service";
+import {StateService} from "./services/state.service";
+import {TaxService} from "./services/tax.service";
+import { RegisterComponent } from './register/register.component';
+import {EqualValidator} from "./equalValidator";
+import { LoginComponent } from './login/login.component';
+import {UserInfoService} from "./services/user-info.service";
 
 @NgModule({
   declarations: [
@@ -69,7 +85,17 @@ import { ProductGridViewComponent } from './product-grid-view/product-grid-view.
     ProductReviewFormComponent,
     CategoryMenuLeftsideComponent,
     ProductListViewComponent,
-    ProductGridViewComponent
+    ProductGridViewComponent,
+    WishListComponent,
+    VoucherComponent,
+    CouponComponent,
+    TaxComponent,
+    SubCategoryTabsComponent,
+    NotFoundComponent,
+    EmptyPageComponent,
+    RegisterComponent,
+    EqualValidator,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +105,8 @@ import { ProductGridViewComponent } from './product-grid-view/product-grid-view.
     InMemoryWebApiModule.forRoot(InMemoryProductDataService),
     StarRatingModule.forRoot(),
     AppRoutingModule,
-    ImageZoomModule
+    ImageZoomModule,
+
   ],
   providers: [
     ProductService,
@@ -90,6 +117,13 @@ import { ProductGridViewComponent } from './product-grid-view/product-grid-view.
     ProductThumbnailService,
     SlideService,
     CategoryService,
+    WishListService,
+    ShoppingCartService,
+    UserService,
+    CountryService,
+    StateService,
+    TaxService,
+    UserInfoService,
     {provide:APP_BASE_HREF,useValue:'/'}
   ],
   bootstrap: [AppComponent]

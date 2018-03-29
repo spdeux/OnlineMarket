@@ -1,0 +1,13 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+p {
+  position: relative;
+  top: 100px;
+  font: italic bold 5em/1 Bodoni, serif;
+  color: #555;
+  text-align: center;
+  animation: fadeIn 1s infinite alternate;
+}

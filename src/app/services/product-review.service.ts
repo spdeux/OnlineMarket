@@ -17,14 +17,13 @@ export class ProductReviewService {
   }
 
   getReviewsByProductId(productId: number) {
-    let url = this.url.reviews + '/?productId=' + productId;
+    let url = this.url.reviews ;//+ '/?productId=' + productId;
     return this.http.get(url)
       .toPromise()
-      .then(res => res.json());
+      .then(res => res.json().filter(r=>r.productId==productId));
   }
 
   createReview(review){
-
     return this.http.post(this.url.reviews,JSON.stringify(review))
       .toPromise()
       .then(res=> res.json() )

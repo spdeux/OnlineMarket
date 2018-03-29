@@ -1,0 +1,296 @@
+<div id="container">
+  <div class="container">
+    <!-- Breadcrumb Start-->
+    <ul class="breadcrumb">
+      <li><a href="index-2.html"><i class="fa fa-home"></i></a></li>
+      <li><a routerLink="/login">Account</a></li>
+      <li><a routerLink="/register">Register</a></li>
+    </ul>
+    <!-- Breadcrumb End-->
+    <div class="row">
+      <!--Middle Part Start-->
+      <div class="col-sm-9" id="content">
+        <h1 class="title">Register Account</h1>
+        <p>If you already have an account with us, please login at the <a routerLink="/login">Login Page</a>.</p>
+        <form class="form-horizontal" #userForm="ngForm" (ngSubmit)="submitUserForm()" >
+          <fieldset id="account">
+            <legend>Your Personal Details</legend>
+            <div style="display: none;" class="form-group required">
+              <label class="col-sm-2 control-label">Customer Group</label>
+              <div class="col-sm-10">
+                <div class="radio">
+                  <label>
+                    <input type="radio" checked="checked" value="1" name="customer_group_id">
+                    Default</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group required">
+              <label for="input-firstname" class="col-sm-2 control-label">First Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="input-firstname"
+                       placeholder="First Name" name="firstname" required
+                       [(ngModel)]="user.firstname" #firstname="ngModel">
+
+                <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="firstname.errors.required">
+                    firstname is required.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group required">
+              <label for="input-lastname" class="col-sm-2 control-label">Last Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="input-lastname"
+                       placeholder="Last Name" name="lastname" required
+                       [(ngModel)]="user.lastname" #lastname="ngModel">
+                <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="lastname.errors.required">
+                    lastname is required.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group required">
+              <label for="input-email" class="col-sm-2 control-label">E-Mail</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="input-email"
+                       placeholder="E-Mail" name="email" required email
+                       [(ngModel)]="user.email" #email="ngModel">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="email.errors?.required">
+                    email is required.
+                  </div>
+
+                  <div *ngIf="email.errors?.email">
+                    email is not valid.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group required">
+              <label for="input-telephone" class="col-sm-2 control-label">Telephone</label>
+              <div class="col-sm-10">
+                <input type="tel" class="form-control" id="input-telephone"
+                       placeholder="Telephone" name="telephone" required
+                       [(ngModel)]="user.telephone" #telephone="ngModel">
+                <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="telephone.errors.required">
+                    telephone is required.
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="input-fax" class="col-sm-2 control-label">Fax</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="input-fax"
+                       placeholder="Fax" name="fax"
+                       [(ngModel)]="user.fax" #fax="ngModel">
+
+              </div>
+            </div>
+          </fieldset>
+          <fieldset id="address">
+            <legend>Your Address</legend>
+            <!--<div class="form-group">-->
+            <!--<label for="input-company" class="col-sm-2 control-label">Company</label>-->
+            <!--<div class="col-sm-10">-->
+            <!--<input type="text" class="form-control" id="input-company" placeholder="Company" value=""-->
+            <!--name="company">-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="form-group required">
+              <label for="input-address" class="col-sm-2 control-label">Address</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="input-address"
+                       placeholder="Address" name="address" required
+                       [(ngModel)]="user.address.fullAddress" #fullAddress="ngModel">
+                <div *ngIf="fullAddress.invalid && (fullAddress.dirty || fullAddress.touched)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="fullAddress.errors.required">
+                    address is required.
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group required">
+              <label for="input-city" class="col-sm-2 control-label">City</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="input-city"
+                       placeholder="City" name="city" required
+                       [(ngModel)]="user.address.city" #city="ngModel">
+                <div *ngIf="city.invalid && (city.dirty || city.touched)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="city.errors.required">
+                    city is required.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group required">
+              <label for="input-postcode" class="col-sm-2 control-label">Post Code</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="input-postcode"
+                       placeholder="Post Code" name="postcode" required
+                       [(ngModel)]="user.address.postalCode" #postalCode="ngModel">
+                <div *ngIf="postalCode.invalid && (postalCode.dirty || postalCode.touched)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="postalCode.errors.required">
+                    postalCode is required.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group required">
+              <label for="input-country" class="col-sm-2 control-label">Country</label>
+              <div class="col-sm-10">
+                <select id="input-country" class="form-control"
+                        name="country" required
+                        [(ngModel)]="user.address.country" #country="ngModel"
+                        (ngModelChange)="onChangeCountry($event)">
+                  <option value="0">-&#45;&#45; Please Select -&#45;&#45;</option>
+                  <option *ngFor="let country of this.countries" [value]="country.id" class="option">
+                    {{country.title}}
+                  </option>
+                </select>
+
+                <div *ngIf="country.invalid && (country.dirty || country.touched)" class="alert alert-danger">
+                  country required
+                </div>
+              </div>
+            </div>
+            <div class="form-group required">
+              <label for="input-zone" class="col-sm-2 control-label">Region / State</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="input-zone"
+                        name="state" required
+                        [(ngModel)]="user.address.state" #state="ngModel"
+                        >
+                  <option *ngFor="let state of this.states" [value]="state.id" class="option">
+                    {{state.title}}
+                  </option>
+                </select>
+              </div>
+
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Your Password</legend>
+            <div class="form-group required">
+              <label for="input-password" class="col-sm-2 control-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="input-password"
+                       placeholder="Password" name="password" required
+                       validateEqual="passwordConfirm" reverse="true"
+                       [(ngModel)]="user.password" #password="ngModel" minlength="6">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="password.errors?.required">
+                    password is required.
+                  </div>
+                  <div [hidden]="password.valid">
+                    Password mismatch
+                  </div>
+                  <div *ngIf="password.errors?.minlength">
+                    minlength of password is 6
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group required">
+              <label for="input-confirm" class="col-sm-2 control-label">Password Confirm</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="input-confirm"
+                       placeholder="Password Confirm" name="passwordConfirm"
+                       required   validateEqual="password" reverse="false"
+                       [(ngModel)]="user.passwordConfirm" #passwordConfirm="ngModel" >
+                <div *ngIf="passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)"
+                     class="alert alert-danger">
+
+                  <div *ngIf="passwordConfirm.errors?.required">
+                    passwordConfirm is required.
+                  </div>
+                  <div [hidden]="passwordConfirm.valid">
+                    Password mismatch
+                  </div>
+                  <div *ngIf="passwordConfirm.errors?.minlength">
+                    minlength of passwordConfirm is 6
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Newsletter</legend>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Subscribe</label>
+              <div class="col-sm-10">
+                <label class="radio-inline">
+                  <input type="radio" value="1" name="newsletter" [(ngModel)]="user.isSubscribe">
+                  Yes</label>
+                <label class="radio-inline">
+                  <input type="radio" checked="checked" value="0" name="newsletter" [(ngModel)]="user.IsSubscribe">
+                  No</label>
+              </div>
+            </div>
+          </fieldset>
+          <div class="buttons">
+            <div class="pull-right">
+              <input type="checkbox" value="1" name="agree">
+              &nbsp;I have read and agree to the <a class="agree" href="#"><b>Privacy Policy</b></a> &nbsp;
+              <input type="submit" class="btn btn-primary" value="Continue" [disabled]="!userForm.form.valid">
+            </div>
+          </div>
+        </form>
+      </div>
+      <!--Middle Part End -->
+      <!--Right Part Start -->
+      <aside id="column-right" class="col-sm-3 hidden-xs">
+        <h3 class="subtitle">Account</h3>
+        <div class="list-group">
+          <ul class="list-item">
+            <li><a routerLink="/login">Login</a></li>
+            <li><a routerLink="/register">Register</a></li>
+            <li><a href="#">Forgotten Password</a></li>
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">Address Books</a></li>
+            <li><a href="wishlist.html">Wish List</a></li>
+            <li><a href="#">Order History</a></li>
+            <li><a href="#">Downloads</a></li>
+            <li><a href="#">Reward Points</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Transactions</a></li>
+            <li><a href="#">Newsletter</a></li>
+            <li><a href="#">Recurring payments</a></li>
+          </ul>
+        </div>
+      </aside>
+      <!--Right Part End -->
+    </div>
+  </div>
+</div>

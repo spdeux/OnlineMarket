@@ -1,24 +1,41 @@
-<div class="owl-item" style="width: 178px;">
-<div  class="product-thumb">
-<div  class="image">
-<a  href="product.html">
-<img  alt="{{this.inputProduct?.name}}" class="img-responsive" src="{{this.inputProduct?.img}}" title="{{this.inputProduct?.name}}">
-</a>
-</div>
-<div  class="caption">
-<h4 ><a  href="product.html">{{this.inputProduct?.name}}</a></h4>
-<p  class="price"> <span  class="price-new">{{"$"+this.inputProduct?.newPrice}}</span>
-<span  class="price-old" *ngIf="this.inputProduct?.oldPrice!=0">{{"$"+this.inputProduct?.oldPrice}}</span>
-<span  class="saving" *ngIf="this.inputProduct?.discount!=0">{{this.inputProduct?.discount +"%"}}</span> </p>
-</div>
-<div  class="button-group">
-<button  class="btn-primary" onclick="" type="button"><span >Add to Cart</span></button>
-<div  class="add-to-links">
-<button  data-toggle="tooltip" onclick="" title="" type="button" data-original-title="Add to wishlist"><i  class="fa fa-heart"></i></button>
-<button  data-toggle="tooltip" onclick="" title="" type="button" data-original-title="Add to compare"><i  class="fa fa-exchange"></i></button>
-</div>
-</div>
-</div>
+<div class="owl-item" style="width: 120px;height:300px;">
+  <div class="product-thumb">
+    <div class="image">
+      <a (click)="onNavigate(inputProduct)">
+        <img alt="{{this.inputProduct?.name}}" class="img-responsive" src="{{this.inputProduct?.img}}"
+             title="{{this.inputProduct?.name}}">
+      </a>
+    </div>
+    <div class="caption">
+      <h4><a (click)="onNavigate(this.inputProduct)">{{this.inputProduct?.name?.substring(0,20)}}</a></h4>
+      <p class="price">
+        <span class="price-new">{{"$"+this.inputProduct?.newPrice}}</span>
+        <span class="price-old" *ngIf="this.inputProduct?.oldPrice!=0">{{"$"+this.inputProduct?.oldPrice}}</span>
+        <span class="saving" *ngIf="this.inputProduct?.discount!=0">{{this.inputProduct?.discount +"%"}}</span></p>
+    </div>
+    <div class="button-group">
+      <button class="btn-primary" type="button" (click)="AddToShoppingCart(inputProduct)"
+              [disabled]="this.disabledAddToCart">
+       <span *ngIf="!this.disabledAddToCart">
+        Add to Cart
+       </span>
+
+        <span *ngIf="this.disabledAddToCart">
+        Adding to Cart
+       <i class="fa fa-spinner fa-spin"></i>
+      </span>
+      </button>
+      <div class="add-to-links">
+        <button data-toggle="tooltip" (click)="AddToWishList(inputProduct)"
+                title="" type="button" data-original-title="Add to wishlist">
+          <i class="fa fa-heart"></i>
+        </button>
+        <button data-toggle="tooltip" onclick="" title="" type="button" data-original-title="Add to compare">
+          <i class="fa fa-exchange"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 

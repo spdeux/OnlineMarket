@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Category} from "../model/category";
 import {Observable} from "rxjs/Observable";
 import {of} from "rxjs/observable/of";
-import {AppUrl} from "../app-url";
+  import {AppUrl} from "../app-url";
 import {Http} from "@angular/http";
 
 @Injectable()

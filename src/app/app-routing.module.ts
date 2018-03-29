@@ -6,6 +6,10 @@ import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
 import {ProductDetailComponent} from "./product-detail/product-detail.component";
 import {HomeComponent} from "./home/home.component";
 import {ProductCategoryComponent} from "./product-category/product-category.component";
+import {WishListComponent} from "./wish-list/wish-list.component";
+import {NotFoundComponent} from "./not-found/not-found.component";
+import {RegisterComponent} from "./register/register.component";
+import {LoginComponent} from "./login/login.component";
 
 
 const routes: Routes = [
@@ -15,7 +19,6 @@ const routes: Routes = [
   //   {path: ':id', component: ProductDetailComponent}
   // ]},
 
-  {path: 'shopping', component: ShoppingCartComponent},
   {path: 'products/:id', component: ProductDetailComponent},
   {path: 'home', component: HomeComponent},
   {
@@ -23,7 +26,12 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'home'
   },
-  {path:'categories/:id',component:ProductCategoryComponent}
+  {path: 'categories/:id', component: ProductCategoryComponent},
+  {path: 'wishlist/:userId', component: WishListComponent},
+  {path: 'shoppingCart/:userId', component: ShoppingCartComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
+  {path: '**', component: NotFoundComponent}
 ]
 
 @NgModule({

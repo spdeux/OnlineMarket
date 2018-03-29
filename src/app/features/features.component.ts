@@ -1,15 +1,16 @@
-import { Component, OnInit,AfterContentInit  } from '@angular/core';
+import {Component, OnInit, AfterContentInit} from '@angular/core';
 import {FeatureService} from "../services/feature.service";
 import {Feature} from "../model/feature";
-import { NgxCarousel } from 'ngx-carousel';
-declare var $ :any;
+import {NgxCarousel} from 'ngx-carousel';
+import {Router} from "@angular/router";
+declare var $: any;
 var $screensize = $(window).width();
 @Component({
   selector: 'app-features',
   templateUrl: './features.component.html',
   styleUrls: ['./features.component.css']
 })
-export class FeaturesComponent implements OnInit , AfterContentInit {
+export class FeaturesComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit() {
 
@@ -17,7 +18,8 @@ export class FeaturesComponent implements OnInit , AfterContentInit {
 
   collectionProducts: Feature[];
 
-  constructor(private featureService: FeatureService) {
+  constructor(private featureService: FeatureService,
+              private router: Router) {
   }
 
   public carouselTileItems: Array<any>;
@@ -26,14 +28,14 @@ export class FeaturesComponent implements OnInit , AfterContentInit {
   ngOnInit() {
     this.carouselTileItems = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
-  this.carouselTile = {
-  grid: {xs: 2, sm: 3, md: 3, lg: 5, all: 0},
-    slide: 1,
-    speed: 400,
-    interval: 4000,
-    point: {
-      visible: true,
-      pointStyles: `
+    this.carouselTile = {
+      grid: {xs: 2, sm: 3, md: 3, lg: 5, all: 0},
+      slide: 1,
+      speed: 400,
+      interval: 4000,
+      point: {
+        visible: true,
+        pointStyles: `
           .ngxcarouselPoint {
             list-style-type: none;
             text-align: center;
@@ -60,16 +62,15 @@ export class FeaturesComponent implements OnInit , AfterContentInit {
               width: 10px;
           }
         `
-    },
-    load: 2,
-    loop: true,
-    touch: true
+      },
+      load: 2,
+      loop: true,
+      touch: true
+    }
+
+    this.featureService.getProducts().subscribe(result => this.collectionProducts = result);
   }
 
-
-
-     this.featureService.getProducts().subscribe(result=>this.collectionProducts=result);
-  }
   public carouselTileLoad(evt: any) {
 
     const len = this.carouselTileItems.length
@@ -80,5 +81,10 @@ export class FeaturesComponent implements OnInit , AfterContentInit {
     }
 
   }
+
+  onNavigate(product) {
+    this.router.navigate(['/products', product.id]);
+  }
+
 
 }
