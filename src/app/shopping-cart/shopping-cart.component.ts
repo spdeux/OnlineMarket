@@ -24,7 +24,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   getShoppingCartByUserId(userId: number) {
-    return this.shoppingCartService.getShoppingCartByUserId(userId).then(result => {
+     this.shoppingCartService.getShoppingCartByUserId(userId).then(result => {
       // console.log(result);
       this.shoppingCartCollection = result;
       this.totalAmount = this.sumShoppingCart(result);
@@ -34,7 +34,7 @@ export class ShoppingCartComponent implements OnInit {
 
   onDelete(id: number, quantity: number) {
     this.shoppingCartService.deleteFromShoppingCart(id).then(result => {
-      this.getShoppingCartByUserId(this.userId).then(result2 => {
+      this.shoppingCartService.getShoppingCartByUserId(this.userId).then(result2 => {
         this.shoppingCartService.addEvent.emit(-quantity);
         this.totalAmount = this.sumShoppingCart(result2);
         this.shoppingCartService.sumEvent.emit(this.totalAmount);
@@ -46,8 +46,9 @@ export class ShoppingCartComponent implements OnInit {
 
   onUpdate(cart: ShoppingCart) {
     this.shoppingCartService.UpdateShoppingCart(cart).then(result => {
-      console.log(result);
-      this.getShoppingCartByUserId(this.userId).then(result2 => {
+      // console.log(result);
+      this.shoppingCartService.getShoppingCartByUserId(this.userId).then(result2 => {
+        // console.log(result2);
         this.totalAmount = this.sumShoppingCart(result2);
         this.shoppingCartService.sumEvent.emit(this.totalAmount);
         // console.log(result2);
@@ -64,12 +65,13 @@ export class ShoppingCartComponent implements OnInit {
 
   sumShoppingCart(cart: ShoppingCart[]) {
     let sum = 0;
-    for (let i = 0; i < cart.length; i++) {
-      sum += (cart[i].quantity * cart[i].product.newPrice)
-
-      return sum;
+    // console.log(cart);
+    if (cart) {
+      for (let i = 0; i < cart.length; i++) {
+        sum += (cart[i].quantity * cart[i].product.newPrice);
+      }
     }
-
+    return sum;
   }
 
 
