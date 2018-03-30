@@ -18,7 +18,7 @@ export class ProductCategoryComponent implements OnInit {
 
   categories: Category[];
   products: Product[];
-  parentCategory=Category;
+  parentCategory = Category;
 
   showOptions = [2, 3, 5, 10, 15, 20];
   showOptionSelected: any = this.showOptions[3];
@@ -38,7 +38,7 @@ export class ProductCategoryComponent implements OnInit {
   total = 0;
   page = 1;
   limit = this.showOptionSelected;
-  isGridView: boolean=true;
+  isGridView: boolean = true;
 
   constructor(private  categoryService: CategoryService,
               private productService: ProductService,
@@ -65,12 +65,12 @@ export class ProductCategoryComponent implements OnInit {
   }
 
   //navigation
-  navigate(selectedOrderId,displayCount){
+  navigate(selectedOrderId, displayCount) {
     this.router.navigate(['/categories/' + this.parentId], {
       queryParams: {
         order: selectedOrderId,
         display: displayCount,
-        view:this.isGridView?'grid':'list'
+        // view: this.isGridView ? 'grid' : 'list'
       }
     });
   }
@@ -79,24 +79,24 @@ export class ProductCategoryComponent implements OnInit {
   //router
   routerManagement() {
 
-     this.activatedRoute.queryParams.subscribe((params: Params) => {
+    this.activatedRoute.queryParams.subscribe((params: Params) => {
 
-       if('order' in params){
-         this.sortOptionSelected = params['order'];
-         this.onSortOptionsSelected(this.sortOptionSelected);
-       }
+      if ('order' in params) {
+        this.sortOptionSelected = params['order'];
+        this.onSortOptionsSelected(this.sortOptionSelected);
+      }
 
-       if('display' in params){
-         this.limit=params['display'];
-         this.showOptionSelected=this.limit;
-         this.onShowOptionsSelected(this.showOptionSelected);
-       }
+      if ('display' in params) {
+        this.limit = params['display'];
+        this.showOptionSelected = this.limit;
+        this.onShowOptionsSelected(this.showOptionSelected);
+      }
 
-       if('view' in params){
-         this.ActivateView(params['view']);
-       }
+      // if ('view' in params) {
+      //   this.ActivateView(params['view']);
+      // }
 
-     });
+    });
   }
 
   //general methods
@@ -149,20 +149,13 @@ export class ProductCategoryComponent implements OnInit {
 
   //sort method
   onSortOptionsSelected(event) {
-    this.sortOptionSelected=event;
+    this.sortOptionSelected = event;
     this.getNSelectedSortedProducts(event, this.limit);
   }
 
   getNSelectedSortedProducts(selectedOrderId, displayCount) {
-    // this.router.navigate(['/categories/' + this.parentId], {
-    //   queryParams: {
-    //     order: selectedOrderId,
-    //     display: displayCount,
-    //     view:this.isGridView?'grid':'list'
-    //   }
-    // });
 
-    this.navigate(selectedOrderId,displayCount);
+    this.navigate(selectedOrderId, displayCount);
 
     this.loading = true;
     this.categoryService.getCategoriesByParentId(this.parentId).then(result => {
@@ -182,8 +175,9 @@ export class ProductCategoryComponent implements OnInit {
       else {
 
         this.categoryService.getCategoryById(this.parentId).then(result3 => {
-
-          this.categories = result3;
+          let cat: Category[] = [];
+          cat.push(result3);
+          this.categories = cat;
           let categoryIds: number[] = this.categories.map(c => c.id);
           this.productService.getSortedProduct(categoryIds, selectedOrderId).then(result2 => {
             this.products = result2;
@@ -204,20 +198,20 @@ export class ProductCategoryComponent implements OnInit {
     this.router.navigate(['/products', product.id]);
   }
 
-  ActivateView(view){
-    if(view=='grid'){
-      this.isGridView=true;
+  ActivateView(view) {
+    if (view == 'grid') {
+      this.isGridView = true;
     }
-    else if(view=='list'){
-      this.isGridView=false;
+    else if (view == 'list') {
+      this.isGridView = false;
     }
 
-    this.navigate( this.sortOptionSelected,this.limit);
+    this.navigate(this.sortOptionSelected, this.limit);
   }
 
-  getParentCategory(){
-    this.categoryService.getCategoryById(this.parentId).then(result=>{
-      this.parentCategory=result;
+  getParentCategory() {
+    this.categoryService.getCategoryById(this.parentId).then(result => {
+      this.parentCategory = result;
     })
   }
 }

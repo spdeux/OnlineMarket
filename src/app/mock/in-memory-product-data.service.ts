@@ -22,7 +22,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         tax: 95,
         code: 'product17',
         availableOptions: {color: ['red', 'pink', 'blue'], quantity: 2},
-        brand: {id: 1, name: 'asus'},
+        brand: {id: 1, name: 'Asus'},
 
       },
       {
@@ -39,7 +39,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         tax: 95,
         code: 'product17',
         availableOptions: {color: ['red', 'green', 'blue'], quantity: 3},
-        brand: {id: 2, name: 'samsung'},
+        brand: {id: 2, name: 'Samsung'},
       },
       {
         id: 3,
@@ -55,7 +55,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         tax: 95,
         code: 'product17',
         availableOptions: {color: ['red', 'yellow', 'blue'], quantity: 1},
-        brand: {id: 3, name: 'apple'},
+        brand: {id: 3, name: 'Apple'},
       },
       {
         id: 4,
@@ -71,7 +71,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         tax: 95,
         code: 'product17',
         availableOptions: {color: ['red', 'navy', 'blue'], quantity: 2},
-        brand: {id: 4, name: 'apple'},
+        brand: {id: 3, name: 'apple'},
       },
       {
         id: 5,
@@ -87,7 +87,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         tax: 95,
         code: 'product18',
         availableOptions: {color: ['red', 'brwon', 'blue'], quantity: 2},
-        brand: {id: 5, name: 'samsung'},
+        brand: {id: 2, name: 'Samsung'},
       },
       {
         id: 6,
@@ -103,7 +103,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         tax: 95,
         code: 'product18',
         availableOptions: {color: ['red', 'black', 'blue'], quantity: 2},
-        brand: {id: 6, name: 'apple'},
+        brand: {id: 3, name: 'Apple'},
       },
       {
         id: 7,
@@ -119,7 +119,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         tax: 95,
         code: 'product16',
         availableOptions: {color: ['red', 'orange', 'blue'], quantity: 2},
-        brand: {id: 7, name: 'samsung'},
+        brand: {id: 2, name: 'Samsung'},
       },
       {
         id: 8,
@@ -135,7 +135,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         tax: 95,
         code: 'product15',
         availableOptions: {color: ['red', 'cream', 'blue'], quantity: 2},
-        brand: {id: 8, name: 'apple'},
+        brand: {id: 3, name: 'Apple'},
       },
       {
         id: 9,
@@ -149,9 +149,9 @@ export class InMemoryProductDataService implements InMemoryDbService {
         rewardPoints: 50,
         available: 'In Stock',
         tax: 95,
-        code: 'product12',
+        code: 'product9',
         availableOptions: {color: ['red', 'lightBlue', 'blue'], quantity: 2},
-        brand: {id: 9, name: 'samsung'},
+        brand: {id: 2, name: 'samsung'},
       },
       {
         id: 10,
@@ -165,9 +165,9 @@ export class InMemoryProductDataService implements InMemoryDbService {
         rewardPoints: 25,
         available: 'In Stock',
         tax: 95,
-        code: 'product13',
+        code: 'product10',
         availableOptions: {color: ['red', 'lightGreen', 'blue'], quantity: 2},
-        brand: {id: 10, name: 'apple'},
+        brand: {id: 3, name: 'apple'},
       },
       {
         id: 11,
@@ -181,9 +181,9 @@ export class InMemoryProductDataService implements InMemoryDbService {
         rewardPoints: 35,
         available: 'In Stock',
         tax: 95,
-        code: 'product12',
+        code: 'product11',
         availableOptions: {color: ['red', 'white', 'blue'], quantity: 2},
-        brand: {id: 11, name: 'samsung'},
+        brand: {id: 2, name: 'samsung'},
       },
       {
         id: 12,
@@ -197,9 +197,9 @@ export class InMemoryProductDataService implements InMemoryDbService {
         rewardPoints: 55,
         available: 'In Stock',
         tax: 95,
-        code: 'product10',
+        code: 'product12',
         availableOptions: {color: ['red', 'silver', 'blue'], quantity: 2},
-        brand: {id: 12, name: 'apple'},
+        brand: {id: 3, name: 'apple'},
       },
       {
         id: 13,
@@ -213,9 +213,9 @@ export class InMemoryProductDataService implements InMemoryDbService {
         rewardPoints: 65,
         available: 'In Stock',
         tax: 95,
-        code: 'product16',
+        code: 'product13',
         availableOptions: {color: ['red', 'gray', 'blue'], quantity: 2},
-        brand: {id: 13, name: 'samsung'},
+        brand: {id: 2, name: 'samsung'},
       },
       {
         id: 14,
@@ -229,9 +229,26 @@ export class InMemoryProductDataService implements InMemoryDbService {
         rewardPoints: 600,
         available: 'In Stock',
         tax: 95,
-        code: 'product17',
+        code: 'product14',
         availableOptions: {color: ['red', 'pink', 'blue'], quantity: 2},
         brand: {id: 1, name: 'asus'},
+
+      },
+      {
+        id: 15,
+        name: 'IPod',
+        newPrice: 230.00,
+        oldPrice: 241.00,
+        discount: -5,
+        rate: 4,
+        img: "../assets/image/product/ipod_classic_1-200x200.jpg",
+        categoryId: 16,
+        rewardPoints: 450,
+        available: 'Pre-order',
+        tax: 95,
+        code: 'product15',
+        availableOptions: {color: ['black', 'pink', 'blue'], quantity: 5},
+        brand: {id: 3, name: 'Apple'},
 
       },
     ]
