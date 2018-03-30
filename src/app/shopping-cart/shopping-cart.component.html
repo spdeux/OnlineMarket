@@ -35,7 +35,11 @@
             <td class="text-left">{{cart?.product?.brand?.name}}</td>
             <td class="text-left">
               <div class="input-group btn-block quantity">
-                <input type="text" name="quantity" value="{{cart?.quantity}}" size="1" class="form-control" [(ngModel)]="cart.quantity">
+                <input type="text" name="quantity" value="{{cart?.quantity}}"
+                       size="1" class="form-control"
+                       [(ngModel)]="cart.quantity"
+                       (input)="onUpdate(cart)">
+
                 <span class="input-group-btn">
                         <button type="button"
                                 data-toggle="tooltip"

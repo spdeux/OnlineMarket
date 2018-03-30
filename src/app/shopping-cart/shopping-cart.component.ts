@@ -45,6 +45,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   onUpdate(cart: ShoppingCart) {
+    console.log('update');
     this.shoppingCartService.UpdateShoppingCart(cart).then(result => {
       // console.log(result);
       this.shoppingCartService.getShoppingCartByUserId(this.userId).then(result2 => {
