@@ -59,6 +59,10 @@ import { RegisterComponent } from './register/register.component';
 import {EqualValidator} from "./equalValidator";
 import { LoginComponent } from './login/login.component';
 import {UserInfoService} from "./services/user-info.service";
+import { ProductCompareComponent } from './product-compare/product-compare.component';
+import {ProductCompareService} from "./services/product-compare.service";
+// import {ToastrModule} from 'ngx-toastr';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -95,7 +99,8 @@ import {UserInfoService} from "./services/user-info.service";
     EmptyPageComponent,
     RegisterComponent,
     EqualValidator,
-    LoginComponent
+    LoginComponent,
+    ProductCompareComponent
   ],
   imports: [
     BrowserModule,
@@ -106,6 +111,8 @@ import {UserInfoService} from "./services/user-info.service";
     StarRatingModule.forRoot(),
     AppRoutingModule,
     ImageZoomModule,
+    // BrowserAnimationsModule, // required animations module
+    // ToastrModule.forRoot(), // ToastrModule added
 
   ],
   providers: [
@@ -124,6 +131,7 @@ import {UserInfoService} from "./services/user-info.service";
     StateService,
     TaxService,
     UserInfoService,
+    ProductCompareService,
     {provide:APP_BASE_HREF,useValue:'/'}
   ],
   bootstrap: [AppComponent]

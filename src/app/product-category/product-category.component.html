@@ -5,16 +5,16 @@
     <div class="row">
       <div class="col-md-4 col-sm-5">
         <div class="btn-group">
-          <button type="button" id="list-view" class="btn btn-default" [class.selected]="this.isGridView" data-toggle="tooltip" title=""
+          <button type="button" id="list-view" class="btn btn-default" [class.selected]="!this.isGridView" data-toggle="tooltip" title=""
                   data-original-title="List" (click)="ActivateView('list')">
             <i class="fa fa-th-list"></i>
           </button>
-          <button type="button" id="grid-view" class="btn btn-default" [class.selected]="!this.isGridView" data-toggle="tooltip" title=""
+          <button type="button" id="grid-view" class="btn btn-default" [class.selected]="this.isGridView" data-toggle="tooltip" title=""
                   data-original-title="Grid" (click)="ActivateView('grid')">
             <i class="fa fa-th"></i>
           </button>
         </div>
-        <a href="compare.html" id="compare-total">Product Compare (0)</a></div>
+        <a id="compare-total">Product Compare ({{this.compareList}})</a></div>
       <div class="col-sm-2 text-right">
         <label class="control-label" for="input-sort">Sort By:</label>
       </div>

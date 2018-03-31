@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
 
     this.userService.createUser(this.user).then(result => {
       this.router.navigate(['/login']);
-      console.log(result);
+      // console.log(result);
     });
   }
 

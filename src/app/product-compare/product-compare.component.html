@@ -1,0 +1,126 @@
+<div id="container">
+  <div class="container">
+    <!-- Breadcrumb Start-->
+    <ul class="breadcrumb">
+      <li><a routerLink="/home"><i class="fa fa-home"></i></a></li>
+      <li><a routerLink="/productCompare/1">Product Comparison</a></li>
+    </ul>
+    <!-- Breadcrumb End-->
+    <div *ngIf="this.productCompareCollection?.length>0">
+      <div class="row">
+        <!--Middle Part Start-->
+        <div id="content" class="col-sm-12">
+          <h1 class="title">Product Comparison</h1>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+              <tr>
+                <td colspan="12"><strong>Product Details</strong></td>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Product</td>
+                <td *ngFor="let pc of this.productCompareCollection">
+                  <a (click)="onNavigate(pc?.product)"><strong>{{pc?.product?.name}}</strong></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Image</td>
+                <td class="text-center" *ngFor="let pc of this.productCompareCollection">
+                  <a (click)="onNavigate(pc?.product)">
+                    <img class="img-thumbnail"
+                         title={{pc?.product?.name}}
+                         alt={{pc?.product?.name}}
+                         src={{pc?.product?.img}}>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>Price</td>
+                <td *ngFor="let pc of this.productCompareCollection">
+                  <span class="price-old">${{pc?.product?.oldPrice}}</span>
+                  <span class="price-new">${{pc?.product?.newPrice}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Brand</td>
+                <td *ngFor="let pc of this.productCompareCollection">{{pc?.product?.brand?.name}}</td>
+              </tr>
+              <tr>
+                <td>Availability</td>
+                <td *ngFor="let pc of this.productCompareCollection">{{pc?.product?.available}}</td>
+              </tr>
+              <tr>
+                <td>Rating</td>
+                <td *ngFor="let pc of this.productCompareCollection">
+                  <star-rating-comp
+                    [rating]="pc?.product?.rate" [starType]="'svg'"
+                    [readOnly]="true">
+
+                  </star-rating-comp>
+                </td>
+              </tr>
+              <!--<tr >-->
+              <!--<td>Summary</td>-->
+              <!--<td class="description">MacBook Air is ultrathin, ultraportable, and ultra unlike anything else. But you-->
+              <!--don’t lose inches and pounds overnight. It’s the result of rethinking conventions. Of multiple wireless-->
+              <!--innovations. An..-->
+              <!--</td>-->
+              <!--<td class="description"> Latest Intel mobile architecture-->
+
+              <!--Powered by the most advanced mobile processors from Intel, the new Core 2 Duo MacBook Pro is over 50%-->
+              <!--faster than the original Core Duo MacBook Pro and now supp..-->
+              <!--</td>-->
+              <!--<td class="description">Samsung Galaxy Tab 10.1, is the world’s thinnest tablet, measuring 8.6 mm-->
+              <!--thickness, running with Android 3.0 Honeycomb OS on a 1GHz dual-core Tegra 2 processor, similar to its-->
+              <!--younger brother Samsung..-->
+              <!--</td>-->
+              <!--</tr>-->
+              <!--<tr >-->
+              <!--<td>Weight</td>-->
+              <!--<td>1.50kg</td>-->
+              <!--<td>1.80kg</td>-->
+              <!--<td>2.00kg</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+              <!--<td>Dimensions (L x W x H)</td>-->
+              <!--<td>0.00mm x 0.00mm x 0.00mm</td>-->
+              <!--<td>0.00mm x 0.00mm x 0.00mm</td>-->
+              <!--<td>0.00cm x 0.00cm x 0.00cm</td>-->
+              <!--</tr>-->
+              </tbody>
+              <tbody>
+              <tr>
+                <td></td>
+                <td *ngFor="let pc of this.productCompareCollection">
+                  <button type="button" class="btn btn-primary btn-block" value="Add to Cart"
+                          (click)="AddToShoppingCart(pc?.product)"
+                          [disabled]="this.disabledAddToCart">
+                  <span *ngIf="!this.disabledAddToCart">
+                    <i class="btn btn-primary btn-block"></i>
+                    Add to Cart
+                   </span>
+                    <span *ngIf="this.disabledAddToCart">
+                    <i class="btn btn-primary btn-block"></i>
+                    Add to Cart
+                     <i class="fa fa-spinner fa-spin"></i>
+                   </span>
+
+                  </button>
+
+                  <a class="btn btn-danger btn-block" (click)="onDelete(pc?.id)">Remove</a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!--Middle Part End -->
+      </div>
+    </div>
+    <div class="row" *ngIf="this.productCompareCollection?.length==0">
+      <app-empty-page></app-empty-page>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,7 @@
 <div class="container">
   <div id="content" class="col-sm-12">
     <h3 class="title">Shopping Cart</h3>
-    <div class="row" *ngIf="this.shoppingCartCollection?.length==0">
-      <!--<span >empty shoppingcart</span>-->
-      <app-empty-page></app-empty-page>
-    </div>
-    <div *ngIf="this.shoppingCartCollection.length>0">
+    <div *ngIf="this.shoppingCartCollection?.length>0">
       <div class="table-responsive" >
         <table class="table table-bordered">
           <thead>
@@ -80,6 +76,9 @@
         <div class="pull-left"><a routerLink="/home" class="btn btn-default">Continue Shopping</a></div>
         <div class="pull-right"><a href="checkout.html" class="btn btn-primary">Checkout</a></div>
       </div>
+    </div>
+    <div class="row" *ngIf="this.shoppingCartCollection?.length==0">
+      <app-empty-page></app-empty-page>
     </div>
   </div>
 </div>

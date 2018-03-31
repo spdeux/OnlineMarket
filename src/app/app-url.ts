@@ -8,6 +8,7 @@ export const AppUrl = {
   'countries': '/api/countries',
   'states': '/api/states',
   'taxes': '/api/taxes',
-  'users':'/api/users',
-  'usersInfo':'/api/usersInfo'
+  'users': '/api/users',
+  'usersInfo': '/api/usersInfo',
+  'productsCompare': '/api/productsCompare'
 };

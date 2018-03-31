@@ -3,14 +3,10 @@
   <ul class="breadcrumb">
     <li><a href="index-2.html"><i class="fa fa-home"></i></a></li>
     <li><a href="#">Account</a></li>
-    <li><a href="wishlist.html">My Wish List</a></li>
+    <li><a routerLink="/wishlist/1">My Wish List</a></li>
   </ul>
   <!-- Breadcrumb End -->
-  <div class="row" *ngIf="this.wishlistCollection?.length==0">
-    <!--<span>empty wishlist</span>-->
-    <app-empty-page></app-empty-page>
-  </div>
-  <div *ngIf="this.wishlistCollection.length>0">
+  <div *ngIf="this.wishlistCollection?.length>0">
     <div class="row">
       <!--Middle Part Start-->
       <div id="content" class="col-sm-12">
@@ -71,6 +67,9 @@
       </div>
       <!--Middle Part End -->
     </div>
+  </div>
+  <div class="row" *ngIf="this.wishlistCollection?.length==0">
+    <app-empty-page></app-empty-page>
   </div>
 </div>
 

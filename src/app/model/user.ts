@@ -1,7 +1,7 @@
 import {Address} from "./address";
 export class User {
   public id: number;
-  public guid:string;
+  public token:string;
   public firstname: string;
   public lastname: string;
   public email: string;

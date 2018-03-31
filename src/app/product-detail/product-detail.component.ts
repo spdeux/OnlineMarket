@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProductService} from "../services/product.service";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Product} from "../model/product";
 import {ProductThumbnailService} from "../services/product-thumbnail.service"
 import {ThumbnailImage} from "../model/thumbnailImage";
@@ -8,6 +8,9 @@ import {WishListService} from "../services/wish-list.service";
 import {wishList} from "../model/wishList";
 import {ShoppingCartService} from "../services/shopping-cart.service";
 import {ShoppingCart} from "../model/shopping-cart";
+import {ProductCompare} from "../model/product-compare";
+import {ProductCompareService} from "../services/product-compare.service";
+import {UserInfo} from "../model/userInfo";
 
 @Component({
   selector: 'app-product-detail',
@@ -23,17 +26,29 @@ export class ProductDetailComponent implements OnInit {
   wishList: wishList;
   shoppingCart: ShoppingCart;
   disabledAddToCart:boolean=false;
+  productCompare: ProductCompare;
 
   constructor(private productService: ProductService,
               private activatedRoute: ActivatedRoute,
               private productThumbnailService: ProductThumbnailService,
               private wishListService: WishListService,
-              private shoppingCartService: ShoppingCartService) {
+              private shoppingCartService: ShoppingCartService,
+              private productCompareService: ProductCompareService,
+              private router: Router) {
   }
 
   ngOnInit() {
+
+    let userInfoStorage = localStorage.getItem("userInfo");
+    if (userInfoStorage) {
+      let userInfo: UserInfo = JSON.parse(userInfoStorage);
+      this.userId = userInfo.id;
+    }
+
     this.wishList = new wishList();
     this.shoppingCart = new ShoppingCart();
+    this.productCompare=new ProductCompare();
+
     this.activatedRoute.params.subscribe((params: Params) => {
       if ('id' in params) {
         this.getProduct(params['id']);
@@ -122,6 +137,54 @@ export class ProductDetailComponent implements OnInit {
       }
     });
 
+  }
+
+  AddToProductCompare(product: Product) {
+    this.productCompare.userId = this.userId;
+    this.productCompare.product = product;
+
+
+    //validation for comparelist 1.maximum 4 products to compare 2.compare product in same category
+    this.productCompareService.getProductCompareByUserId(this.userId).then(result => {
+
+      if (result.length == 0) {
+        this.productCompareService.addToCompareList(this.productCompare).then(result2 => {
+          this.router.navigate(['/productCompare', this.productCompare.userId]);
+        });
+      }
+      else if (result.length > 0 && result.length < 4) {
+        if ((result[0] as ProductCompare).product.categoryId === product.categoryId) {
+          this.productCompareService.IsExistProductInCompareList(this.userId, product.id).then(result3 => {
+            if (result3.length === 0) {
+              this.productCompareService.addToCompareList(this.productCompare).then(result4 => {
+                this.router.navigate(['/productCompare', this.productCompare.userId]);
+              });
+            }
+            else {
+              this.router.navigate(['/productCompare', this.userId]);
+            }
+          });
+        }
+        else {
+          alert('product is not in the same category');
+        }
+      }
+      else if (result.length >= 4) {
+        if ((result[0] as ProductCompare).product.categoryId === product.categoryId) {
+          this.productCompareService.IsExistProductInCompareList(this.userId, product.id).then(result5 => {
+            if (result5.length === 0) {
+              alert('you can compare maximum 4 products.');
+            }
+            else {
+              this.router.navigate(['/productCompare', this.userId]);
+            }
+          });
+        }
+        else {
+          alert('product is not in the same category');
+        }
+      }
+    });
   }
 
 }

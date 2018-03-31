@@ -56,8 +56,5 @@ export class WishListService {
     console.log(error);
   }
 
-  // addItemToWishList(count){
-  //   this.addEvent.next(count);
-  // }
 
 }

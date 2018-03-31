@@ -242,7 +242,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
         discount: -5,
         rate: 4,
         img: "../assets/image/product/ipod_classic_1-200x200.jpg",
-        categoryId: 16,
+        categoryId: 50,
         rewardPoints: 450,
         available: 'Pre-order',
         tax: 95,
@@ -423,6 +423,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
     let users = [
       {id: -1, firstname: 'sepideh', lastname: 'masoumi', username: 'sepi', password: '123456'}
     ];
+
     let usersInfo=[
       {id:-1,guid:'',firstname:'sepideh',lastname:'masoumi',expirationDate:new Date()}
       ];
@@ -440,13 +441,13 @@ export class InMemoryProductDataService implements InMemoryDbService {
         rewardPoints: 65,
         available: 'In Stock',
         tax: 95,
-        code: 'product16',
+        code: 'product13',
         availableOptions: {color: ['red', 'gray', 'blue'], quantity: 2},
-        brand: {id: 13, name: 'samsung'},
+        brand: {id: 2, name: 'samsung'},
       }
     }];
-    let wishlist = [
 
+    let wishlist = [
       {
         id: 1, userId: -1, date: new Date(), product: {
         id: 13,
@@ -460,12 +461,13 @@ export class InMemoryProductDataService implements InMemoryDbService {
         rewardPoints: 65,
         available: 'In Stock',
         tax: 95,
-        code: 'product16',
+        code: 'product13',
         availableOptions: {color: ['red', 'gray', 'blue'], quantity: 2},
-        brand: {id: 13, name: 'samsung'},
+        brand: {id: 2, name: 'samsung'},
       }
       }
     ];
+
     let countries = [
       {id: 1, title: 'Australia'},
       {id: 2, title: 'Canada'},
@@ -481,6 +483,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
       {id: 12, title: 'Turkey'},
       {id: 13, title: 'United States'}
     ];
+
     let states = [
       {id: 1, countryId: 1, title: 'sydney'},
       {id: 2, countryId: 1, title: 'melbourn'},
@@ -513,6 +516,7 @@ export class InMemoryProductDataService implements InMemoryDbService {
       {id: 29, countryId: 13, title: 'california'},
       {id: 30, countryId: 13, title: 'boston'}
     ];
+
     let taxes = [
       {id: 1, stateId: 1, amount: .01},
       {id: 1, stateId: 2, amount: .02},
@@ -546,8 +550,27 @@ export class InMemoryProductDataService implements InMemoryDbService {
       {id: 1, stateId: 30, amount: .30}
     ];
 
+    let productsCompare=[
+      {
+        id:1,userId:-1,product: {
+        id: 13,
+        name: 'Pnina Tornai Perfume',
+        newPrice: 110,
+        oldPrice: 0,
+        discount: 0,
+        rate: 0,
+        img: "../assets/image/product/macbook_2-200x200.jpg",
+        categoryId: 17,
+        rewardPoints: 65,
+        available: 'In Stock',
+        tax: 95,
+        code: 'product13',
+        availableOptions: {color: ['red', 'gray', 'blue'], quantity: 2},
+        brand: {id: 2, name: 'samsung'},
+      }}
+    ];
 
-    return {products, reviews, thumbnails, categories, users, shoppingCart, wishlist, countries, states, taxes,usersInfo};
+    return {products, reviews, thumbnails, categories, users, shoppingCart, wishlist, countries, states, taxes,usersInfo,productsCompare};
   }
 
   constructor() {

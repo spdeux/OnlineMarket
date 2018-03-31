@@ -25,9 +25,15 @@ export class LoginComponent implements OnInit {
   }
 
   submitUser() {
+    //step1:check to exist user
     this.userService.getUserByUsernamePass(this.user.email, this.user.password).then(result => {
+
       if (result.length > 0) {
+        //if exist
+        this.isExistUSer = true;
+
         let userInfoResult=result[0] as UserInfo;
+        //step2:make userInfo & save it
         this.userInfo = new UserInfo();
         this.userInfo.id = userInfoResult.id;
         this.userInfo.token = userInfoResult.token;
@@ -36,17 +42,19 @@ export class LoginComponent implements OnInit {
         this.userInfo.expirationDate = new Date();
 
         this.userInfoService.createUserInfo(this.userInfo).then(result2 => {
-          console.log(result2);
-          window.localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
+
+         //step3:put in localstorage and announce that, then go to home page
+          localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
           this.userInfoService.loginEvent.emit(this.userInfo)
           this.router.navigate(['/home']);
         });
 
       }
       else {
+        //if not exist
         this.isExistUSer = false;
       }
-      console.log(result);
+      // console.log(result);
     });
 
   }

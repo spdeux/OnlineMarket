@@ -2,7 +2,7 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ShoppingCartService} from "../services/shopping-cart.service";
 import {Router} from "@angular/router";
 import {ShoppingCart} from "../model/shopping-cart";
-
+import {UserInfo} from "../model/userInfo";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -20,15 +20,19 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    let userInfoStorage = localStorage.getItem("userInfo");
+    if (userInfoStorage) {
+      let userInfo: UserInfo = JSON.parse(userInfoStorage);
+      this.userId = userInfo.id;
+    }
     this.getShoppingCartByUserId(this.userId);
   }
 
   getShoppingCartByUserId(userId: number) {
      this.shoppingCartService.getShoppingCartByUserId(userId).then(result => {
-      // console.log(result);
       this.shoppingCartCollection = result;
       this.totalAmount = this.sumShoppingCart(result);
-
     });
   }
 
@@ -38,24 +42,16 @@ export class ShoppingCartComponent implements OnInit {
         this.shoppingCartService.addEvent.emit(-quantity);
         this.totalAmount = this.sumShoppingCart(result2);
         this.shoppingCartService.sumEvent.emit(this.totalAmount);
-        // console.log(result2);
-
       });
     });
   }
 
   onUpdate(cart: ShoppingCart) {
-    console.log('update');
     this.shoppingCartService.UpdateShoppingCart(cart).then(result => {
-      // console.log(result);
       this.shoppingCartService.getShoppingCartByUserId(this.userId).then(result2 => {
-        // console.log(result2);
         this.totalAmount = this.sumShoppingCart(result2);
         this.shoppingCartService.sumEvent.emit(this.totalAmount);
-        // console.log(result2);
-
       });
-
 
     });
   }
@@ -66,7 +62,6 @@ export class ShoppingCartComponent implements OnInit {
 
   sumShoppingCart(cart: ShoppingCart[]) {
     let sum = 0;
-    // console.log(cart);
     if (cart) {
       for (let i = 0; i < cart.length; i++) {
         sum += (cart[i].quantity * cart[i].product.newPrice);

@@ -10,6 +10,7 @@ import {WishListComponent} from "./wish-list/wish-list.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
 import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
+import {ProductCompareComponent} from "./product-compare/product-compare.component";
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'shoppingCart/:userId', component: ShoppingCartComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'productCompare/:userId', component: ProductCompareComponent},
   {path: '**', component: NotFoundComponent}
 ]
 

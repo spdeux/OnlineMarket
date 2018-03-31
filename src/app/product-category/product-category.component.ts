@@ -6,6 +6,7 @@ import {Product} from "../model/product";
 import {ProductService} from "../services/product.service";
 import {PlatformLocation} from "@angular/common";
 import * as _ from 'lodash';
+import {ProductCompareService} from "../services/product-compare.service";
 
 
 @Component({
@@ -39,16 +40,20 @@ export class ProductCategoryComponent implements OnInit {
   page = 1;
   limit = this.showOptionSelected;
   isGridView: boolean = true;
+  compareList: number = 0;
+  userId: number = 1;
 
   constructor(private  categoryService: CategoryService,
               private productService: ProductService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
-              private location: PlatformLocation) {
+              private location: PlatformLocation,
+              private productCompareService: ProductCompareService) {
 
     location.onPopState(() => {
       this.routerManagement();
     });
+
   }
 
   ngOnInit() {
@@ -60,6 +65,17 @@ export class ProductCategoryComponent implements OnInit {
         this.getCategoriesByParentId();
         this.getProductByCategoryIds();
         this.getParentCategory();
+      }
+    });
+
+    //to show compare list count
+    this.getCompareListCount();
+  }
+
+  getCompareListCount() {
+    this.productCompareService.getProductCompareByUserId(this.userId).then(result => {
+      if (result) {
+        this.compareList = result.length;
       }
     });
   }
@@ -74,7 +90,6 @@ export class ProductCategoryComponent implements OnInit {
       }
     });
   }
-
 
   //router
   routerManagement() {

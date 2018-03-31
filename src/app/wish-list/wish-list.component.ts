@@ -8,6 +8,7 @@ import {ShoppingCart} from "../model/shopping-cart";
 import {ShoppingCartService} from "../services/shopping-cart.service";
 import {UserInfo} from "../model/userInfo";
 import {UserService} from "../services/user.service";
+import {UserInfoService} from "../services/user-info.service";
 
 
 @Component({
@@ -21,36 +22,26 @@ export class WishListComponent implements OnInit {
   shoppingCart: ShoppingCart;
   disabledAddToCart: boolean = false;
 
+
   constructor(private wishListService: WishListService,
               private productService: ProductService,
               private shoppingCartService: ShoppingCartService,
               private userService: UserService,
+              private userInfoService: UserInfoService,
               private router: Router) {
   }
 
   ngOnInit() {
+
+    let userInfoStorage = localStorage.getItem("userInfo");
+    if (userInfoStorage) {
+      let userInfo: UserInfo = JSON.parse(userInfoStorage);
+      this.userId = userInfo.id;
+    }
+
     this.getWishListByUser(this.userId);
     this.shoppingCart = new ShoppingCart();
   }
-
-  // validateUser() {
-  //   let userInfo: UserInfo = JSON.parse(localStorage.getItem("userInfo"));
-  //   this.userId = userInfo.id;
-  //
-  //   //authenticate
-  //   this.userService.getUserById(this.userId).then(result => {
-  //
-  //     if (result) {
-  //       //user is authenticated
-  //       this.userService.getUserByIdGuid(this.userId, userInfo.token).then(result2 => {
-  //
-  //         if (result2) {
-  //           //user is authorized
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
 
   getWishListByUser(userId: number) {
     return this.wishListService.getWishListByUserId(userId).then(result => {
@@ -79,7 +70,6 @@ export class WishListComponent implements OnInit {
         this.shoppingCartService.addToShoppingCart(this.shoppingCart).then(result2 => {
           this.shoppingCartService.addEvent.emit(1);
           this.disabledAddToCart = false;
-          // console.log(result2);
         });
       }
       else {
@@ -89,14 +79,11 @@ export class WishListComponent implements OnInit {
 
           this.shoppingCartService.UpdateShoppingCart(this.shoppingCart).then(result3 => {
             this.disabledAddToCart = false;
-            // console.log(result3);
-
           });
 
         });
       }
     });
-
   }
 
   onNavigate(product) {

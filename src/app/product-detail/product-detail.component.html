@@ -92,7 +92,7 @@
                 <i class="fa fa-heart"></i> Add to Wish List
               </button>
               <br>
-              <button type="button" class="wishlist">
+              <button type="button" class="wishlist" (click)="AddToProductCompare(selectedProduct)">
                 <i class="fa fa-exchange"></i> Compare this Product
               </button>
             </div>
@@ -186,7 +186,9 @@
     <h3 class="subtitle">Related Products</h3>
 
     <app-products *ngIf="this.selectedProduct?.categoryId"
-                  [inputCategoryId]="this.selectedProduct?.categoryId"></app-products>
+                  [inputCategoryId]="this.selectedProduct?.categoryId">
+
+    </app-products>
 
 
   </div>
