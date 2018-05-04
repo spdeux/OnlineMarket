@@ -10,5 +10,7 @@ export const AppUrl = {
   'taxes': '/api/taxes',
   'users': '/api/users',
   'usersInfo': '/api/usersInfo',
-  'productsCompare': '/api/productsCompare'
+  'productsCompare': '/api/productsCompare',
+  'customBlocks':'/api/customBlocks',
+  'brands':'/api/brands'
 };

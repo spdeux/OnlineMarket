@@ -1,0 +1,32 @@
+<div class="custom_block">
+  <ul>
+    <li>
+      <table>
+        <tbody>
+        <tr>
+          <td *ngFor="let cb of this.customBlocks">
+            <img alt={{cb?.title}} src={{cb?.img}}>
+          </td>
+        </tr>
+        <tr>
+          <td *ngFor="let cb of this.customBlocks">
+            <h4>{{cb?.title}}</h4>
+          </td>
+        </tr>
+        <tr>
+          <td *ngFor="let cb of this.customBlocks">
+            {{cb?.description}}
+          </td>
+        </tr>
+        <tr>
+          <td *ngFor="let cb of this.customBlocks">
+            <strong>
+              <a class="btn btn-primary btn-sm" href="#">Read More</a>
+            </strong>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </li>
+  </ul>
+</div>

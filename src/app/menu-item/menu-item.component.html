@@ -1,0 +1,12 @@
+<div id="menu"  >
+<ul>
+<li   *ngFor="let sub of subCategories">
+  <a class="item"   (mouseenter)="mouseoverDone(true,sub?.id)"  (click)="onNavigate(sub)">{{sub?.name}} <span *ngIf="hasChildren(sub?.id)">&rsaquo;</span></a>
+  <div  [class.dropdown-menu]="flag && sub?.id==myCatId"
+        [style.display]="flag && sub?.id==myCatId && hasChildren(myCatId) ? 'block' : 'none'"
+        *ngIf="flag && sub?.id==myCatId && hasChildren(myCatId)">
+    <app-menu-item [categories]="categories"  [catId]="myCatId"></app-menu-item>
+  </div>
+</li>
+</ul>
+</div>

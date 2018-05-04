@@ -1,0 +1,12 @@
+.item{
+  color: black;
+  font-size: medium;
+}
+.dropdown-menus{
+  float: left;
+  text-align: right;
+  top: -30px;
+}
+#menu {
+  margin-right: -5px;
+}

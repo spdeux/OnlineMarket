@@ -50,10 +50,11 @@ export class WishListComponent implements OnInit {
   }
 
   onDelete(id: number) {
+
     this.wishListService.deleteFromWishList(id).then(result => {
       this.getWishListByUser(this.userId).then(result2 => {
         this.wishListService.addEvent.emit(-1);
-        console.log(result2);
+        // console.log(result2);
       });
     });
   }

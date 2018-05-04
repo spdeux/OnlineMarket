@@ -64,6 +64,7 @@ export class ProductCategoryComponent implements OnInit {
 
         this.getCategoriesByParentId();
         this.getProductByCategoryIds();
+        // this.getNSelectedSortedProducts2(this.sortOptionSelected,this.limit);
         this.getParentCategory();
       }
     });
@@ -72,12 +73,12 @@ export class ProductCategoryComponent implements OnInit {
     this.getCompareListCount();
   }
 
-  getCompareListCount() {
-    this.productCompareService.getProductCompareByUserId(this.userId).then(result => {
-      if (result) {
-        this.compareList = result.length;
-      }
-    });
+  getCompareListCount(){
+    this.productCompareService.getProductCompareByUserId(this.userId).then(result=>{
+       if(result){
+         this.compareList=result.length;
+       }
+    })
   }
 
   //navigation
@@ -95,21 +96,32 @@ export class ProductCategoryComponent implements OnInit {
   routerManagement() {
 
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-
+      console.log('routermanager');
       if ('order' in params) {
         this.sortOptionSelected = params['order'];
-        this.onSortOptionsSelected(this.sortOptionSelected);
+        // this.onSortOptionsSelected(this.sortOptionSelected);
+      }
+      else {
+        this.sortOptionSelected = -1;
+        // this.onSortOptionsSelected(this.sortOptionSelected);
       }
 
       if ('display' in params) {
         this.limit = params['display'];
         this.showOptionSelected = this.limit;
-        this.onShowOptionsSelected(this.showOptionSelected);
+        // this.onShowOptionsSelected(this.showOptionSelected);
+      }
+      else{
+        this.limit = this.showOptions[3];
+        this.showOptionSelected=this.limit;
+        // this.onSortOptionsSelected(this.sortOptionSelected);
       }
 
       // if ('view' in params) {
       //   this.ActivateView(params['view']);
       // }
+
+      this.getNSelectedSortedProducts(this.sortOptionSelected,this.limit);
 
     });
   }
@@ -122,8 +134,8 @@ export class ProductCategoryComponent implements OnInit {
   }
 
   getProductByCategoryIds() {
-    this.getNSelectedSortedProducts(this.sortOptionSelected, this.limit);
-  }
+  this.getNSelectedSortedProducts(this.sortOptionSelected, this.limit);
+}
 
   //pagination methods
   goToPage(n: number): void {
@@ -160,54 +172,57 @@ export class ProductCategoryComponent implements OnInit {
     this.limit = event;
     this.page = 1;
     this.getProductByCategoryIds();
+     this.navigate(this.sortOptionSelected, this.limit);
   }
 
   //sort method
   onSortOptionsSelected(event) {
     this.sortOptionSelected = event;
     this.getNSelectedSortedProducts(event, this.limit);
+    this.navigate(this.sortOptionSelected,this.limit);
   }
 
   getNSelectedSortedProducts(selectedOrderId, displayCount) {
 
-    this.navigate(selectedOrderId, displayCount);
+  // this.navigate(selectedOrderId, displayCount);
 
-    this.loading = true;
-    this.categoryService.getCategoriesByParentId(this.parentId).then(result => {
-      this.categories = result;
+  this.loading = true;
+  this.categoryService.getCategoriesByParentId(this.parentId).then(result => {
+    this.categories = result;
 
-      if (this.categories.length > 0) {
+    if (this.categories.length > 0) {
 
+      let categoryIds: number[] = this.categories.map(c => c.id);
+      this.productService.getSortedProduct(categoryIds, selectedOrderId).then(result2 => {
+        this.products = result2;
+        this.total = this.products.length;
+        this.products = this.products.slice(this.getMin() - 1, this.getMax());
+        this.loading = false;
+      });
+    }
+
+    else {
+
+      this.categoryService.getCategoryById(this.parentId).then(result3 => {
+        let cat: Category[] = [];
+        cat.push(result3);
+        this.categories = cat;
         let categoryIds: number[] = this.categories.map(c => c.id);
         this.productService.getSortedProduct(categoryIds, selectedOrderId).then(result2 => {
           this.products = result2;
           this.total = this.products.length;
           this.products = this.products.slice(this.getMin() - 1, this.getMax());
           this.loading = false;
-        });
-      }
-
-      else {
-
-        this.categoryService.getCategoryById(this.parentId).then(result3 => {
-          let cat: Category[] = [];
-          cat.push(result3);
-          this.categories = cat;
-          let categoryIds: number[] = this.categories.map(c => c.id);
-          this.productService.getSortedProduct(categoryIds, selectedOrderId).then(result2 => {
-            this.products = result2;
-            this.total = this.products.length;
-            this.products = this.products.slice(this.getMin() - 1, this.getMax());
-            this.loading = false;
-
-          });
 
         });
-      }
+
+      });
+    }
 
 
-    });
-  }
+  });
+}
+
 
   onNavigate(product) {
     this.router.navigate(['/products', product.id]);
@@ -221,13 +236,17 @@ export class ProductCategoryComponent implements OnInit {
       this.isGridView = false;
     }
 
-    this.navigate(this.sortOptionSelected, this.limit);
+    // this.navigate(this.sortOptionSelected, this.limit);
   }
 
   getParentCategory() {
     this.categoryService.getCategoryById(this.parentId).then(result => {
       this.parentCategory = result;
     })
+  }
+
+  onAdvanceSearch(){
+    this.router.navigate([], {queryParams: {search: 'advance'}});
   }
 }
 

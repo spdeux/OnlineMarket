@@ -11,15 +11,10 @@ import {NotFoundComponent} from "./not-found/not-found.component";
 import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
 import {ProductCompareComponent} from "./product-compare/product-compare.component";
+import {CustomBlockMenuComponent} from "./custom-block-menu/custom-block-menu.component";
 
 
 const routes: Routes = [
-
-  // {path: 'products', children: [
-  //   {path: '', component: ShoppingCartComponent},
-  //   {path: ':id', component: ProductDetailComponent}
-  // ]},
-
   {path: 'products/:id', component: ProductDetailComponent},
   {path: 'home', component: HomeComponent},
   {
@@ -33,15 +28,14 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'productCompare/:userId', component: ProductCompareComponent},
+  // {path:'customBlocks',component:CustomBlockMenuComponent},
   {path: '**', component: NotFoundComponent}
 ]
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes),
-
-
+    RouterModule.forRoot(routes)
   ],
   declarations: [],
   exports: [

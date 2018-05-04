@@ -8,7 +8,6 @@ import {ShoppingCart} from "../model/shopping-cart";
 import {ProductCompare} from "../model/product-compare";
 import {ProductCompareService} from "../services/product-compare.service";
 import {UserInfo} from "../model/userInfo";
-// import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-product',
@@ -27,7 +26,6 @@ export class ProductComponent implements OnInit {
               private wishListService: WishListService,
               private shoppingCartService: ShoppingCartService,
               private productCompareService: ProductCompareService,
-              // private toastr: ToastrService
   ) {
   }
 
@@ -116,8 +114,10 @@ export class ProductComponent implements OnInit {
             }
           });
         }
+
         else {
           alert('product is not in the same category');
+
         }
       }
       else if (result.length >= 4) {
@@ -132,7 +132,7 @@ export class ProductComponent implements OnInit {
           });
         }
         else {
-          alert('product is not in the same category');
+           alert('product is not in the same category');
         }
       }
     });

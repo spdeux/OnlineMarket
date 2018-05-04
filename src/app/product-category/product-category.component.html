@@ -3,7 +3,8 @@
   <app-categories *ngIf="this.categories" [inputCategories]="this.categories"></app-categories>
   <div class="product-filter">
     <div class="row">
-      <div class="col-md-4 col-sm-5">
+
+      <div class="col-md-3 col-sm-4">
         <div class="btn-group">
           <button type="button" id="list-view" class="btn btn-default" [class.selected]="!this.isGridView" data-toggle="tooltip" title=""
                   data-original-title="List" (click)="ActivateView('list')">
@@ -15,10 +16,11 @@
           </button>
         </div>
         <a id="compare-total">Product Compare ({{this.compareList}})</a></div>
-      <div class="col-sm-2 text-right">
+
+      <div class="col-sm-1 text-right">
         <label class="control-label" for="input-sort">Sort By:</label>
       </div>
-      <div class="col-md-3 col-sm-2 text-right">
+      <div class="col-md-2 col-sm-2 text-right">
         <select id="input-sort" class="form-control col-sm-3" [(ngModel)]='sortOptionSelected'
                 (ngModelChange)="onSortOptionsSelected($event)">
           <option class="option" *ngFor="let sOption of sortOptions" [value]="sOption.id">{{sOption.name}}</option>
@@ -33,6 +35,10 @@
           <option class='option' *ngFor='let option of showOptions' [value]="option">{{option}}</option>
         </select>
       </div>
+      <div class="col-sm-2 col-md-2">
+        <input type="button" value="advance Search" (click)="onAdvanceSearch()" >
+      </div>
+
     </div>
   </div>
   <br>
@@ -54,5 +60,7 @@
       [perPage]="limit"
       [count]="total"></app-pagination>
   </div>
+
+  <!--<app-advance-search [@editorFly]="editorActivation"></app-advance-search>-->
 </div>
 

@@ -417,6 +417,12 @@ export class InMemoryProductDataService implements InMemoryDbService {
 
       {id: 57, parentId: 2, name: "Men's healthy"},
       {id: 58, parentId: 2, name: "Women's healthy"},
+      {id: 59, parentId: 55, name: "Samsung Collection"},
+      {id: 60, parentId: 55, name: "Iphone Collection"},
+      {id: 61, parentId: 59, name: "Samsung Collection1"},
+      {id: 62, parentId: 59, name: "Samsung Collection2"},
+      {id: 63, parentId: 61, name: "Samsung 1"},
+      {id: 64, parentId: 61, name: "Samsung 2"},
 
     ];
 
@@ -424,9 +430,9 @@ export class InMemoryProductDataService implements InMemoryDbService {
       {id: -1, firstname: 'sepideh', lastname: 'masoumi', username: 'sepi', password: '123456'}
     ];
 
-    let usersInfo=[
-      {id:-1,guid:'',firstname:'sepideh',lastname:'masoumi',expirationDate:new Date()}
-      ];
+    let usersInfo = [
+      {id: -1, guid: '', firstname: 'sepideh', lastname: 'masoumi', expirationDate: new Date()}
+    ];
 
     let shoppingCart = [{
       id: 1, userId: -1, quantity: 2, product: {
@@ -550,9 +556,9 @@ export class InMemoryProductDataService implements InMemoryDbService {
       {id: 1, stateId: 30, amount: .30}
     ];
 
-    let productsCompare=[
+    let productsCompare = [
       {
-        id:1,userId:-1,product: {
+        id: 1, userId: -1, product: {
         id: 13,
         name: 'Pnina Tornai Perfume',
         newPrice: 110,
@@ -567,10 +573,45 @@ export class InMemoryProductDataService implements InMemoryDbService {
         code: 'product13',
         availableOptions: {color: ['red', 'gray', 'blue'], quantity: 2},
         brand: {id: 2, name: 'samsung'},
-      }}
+      }
+      }
     ];
 
-    return {products, reviews, thumbnails, categories, users, shoppingCart, wishlist, countries, states, taxes,usersInfo,productsCompare};
+    let customBlocks = [
+      {
+        id: 1,
+        title: 'CMS Blocks',
+        description: 'This is a CMS block. You can insert any content (HTML, Text, Images) Here.',
+        img: '../assets/image/banner/cms-block.jpg'
+      },
+      {
+        id: 2,
+        title: 'Responsive Template',
+        description: 'This is a CMS block. You can insert any content (HTML, Text, Images) Here.',
+        img: '../assets/image/banner/responsive.jpg'
+      },
+      {
+        id: 3,
+        title: 'Dedicated Support',
+        description: 'This is a CMS block. You can insert any content (HTML, Text, Images) Here.',
+        img: '../assets/image/banner/cms-block.jpg'
+      }
+    ];
+
+    let brands=[
+      {id:1,name:'Apple',img:'../assets/image/product/apple_logo-60x60.jpg'},
+      {id:2,name:'Canon',img:'../assets/image/product/canon_logo-60x60.jpg'},
+      {id:3,name:'Hewlett-Packard',img:'../assets/image/product/hp_logo-60x60.jpg'},
+      {id:4,name:'HTC',img:'../assets/image/product/htc_logo-60x60.jpg'},
+      {id:5,name:'Palm',img:'../assets/image/product/palm_logo-60x60.jpg'},
+      {id:6,name:'Sony',img:'../assets/image/product/sony_logo-60x60.jpg'}
+    ]
+
+    return {
+      products, reviews, thumbnails, categories, users,
+      shoppingCart, wishlist, countries, states, taxes,
+      usersInfo, productsCompare, customBlocks,brands
+    };
   }
 
   constructor() {
